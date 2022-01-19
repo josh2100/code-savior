@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS code_savior;
+
+CREATE DATABASE code_savior;
