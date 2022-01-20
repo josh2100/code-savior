@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const bcrypt = require("bcrypt");
 const { User, Post, Comment, Vote } = require("../../models");
+const withAuth = require("../../utils/auth");
 
+// Get all User route
 router.get("/", async (req, res) => {
   try {
     const response = await User.findAll({
@@ -15,6 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get one User route
 router.get("/:id", async (req, res) => {
   try {
     const response = await User.findOne({
@@ -53,6 +55,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Create a User route
 router.post("/", async (req, res) => {
   try {
     const response = await User.create({
@@ -72,7 +75,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+// Update a User route
+router.put("/:id", withAuth, async (req, res) => {
   try {
     const response = await User.update(req.body, {
       individualHooks: true,
@@ -91,6 +95,56 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// User login route
+router.put("/login", async (req, res) => {
+  try {
+    const response = await User.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!response) {
+      res
+        .status(400)
+        .json({ message: "You entered an incorrect email address!" });
+      return;
+    }
+    const correctPassword = response.checkPassword(req.body.password);
+
+    if (!correctPassword) {
+      res.status(400).json({ message: "You entered an incorrect password!" });
+      return;
+    }
+
+    req.session.save(() => {
+      // declare session variables
+      req.session.user_id = response.id;
+      req.session.username = response.username;
+      req.session.loggedIn = true;
+
+      res
+        .status(200)
+        .json({ user: response, message: "You are now logged in!" });
+    });
+
+    res.status(200).json({ message: "You are successfully logged in!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// User logout route
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+// User delete route
 router.delete("/:id", async (req, res) => {
   try {
     const response = await User.destroy({
@@ -106,5 +160,6 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;

@@ -1,29 +1,32 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
+// create our vote model
 class Vote extends Model {}
 
+// create field/columns for vote model
 Vote.init(
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "user",
         key: "id",
       },
     },
     post_id: {
-      type: DataTypes.INTEGER,
-      reference: {
-        model: "post",
-        key: "id",
-      },
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: "post",
+            key: "id",
+        },
     },
   },
   {
@@ -34,5 +37,6 @@ Vote.init(
     modelName: "vote",
   }
 );
+
 
 module.exports = Vote;

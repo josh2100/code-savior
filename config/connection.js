@@ -1,4 +1,4 @@
-const Sequelize = require("Sequelize");
+const Sequelize = require("sequelize");
 // To secure password, environment variables used
 require("dotenv").config();
 let sequelize;
