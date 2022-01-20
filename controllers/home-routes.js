@@ -6,9 +6,9 @@ const { Post, User } = require("../models");
 router.get("/", (req, res) => {
   console.log("======================");
 
-  // res.render("homepage", {
-  //   loggedIn: req.session.loggedIn,
-  // });
+  res.render("homepage", {
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 // Show login, else redirect to homepage
@@ -20,3 +20,5 @@ router.get("/login", (req, res) => {
 
   res.render("login");
 });
+
+module.exports = router;

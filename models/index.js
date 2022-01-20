@@ -1,17 +1,17 @@
-const User = require('./users');
-const Post = require ('./posts');
-const Comment = require ('./comment');
+// const User = require('./users');
+// const Post = require('./posts');
+// const Comment = require('./comment');
 
 
-User.hasMany(Post);
+// User.hasMany(Post);
 
-Post.belongsToMany(User);
+// Post.belongsToMany(User);
 
-User.hasMany(Comment);
+// User.hasMany(Comment);
 
-Comment.belongsToMany(User);
+// Comment.belongsToMany(User);
 
-Post.hasMany(Comment);
+// Post.hasMany(Comment);
 
-Comment.belongsToMany(Post);
+// Comment.belongsToMany(Post);
 

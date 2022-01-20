@@ -1,0 +1,10 @@
+// Universal Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, a::after, a:hover, a::before {
+    text-decoration: none;
+}
