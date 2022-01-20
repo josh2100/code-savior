@@ -67,43 +67,43 @@ const { User, Post, Comment, Vote, Question } = require("../../models");
 //   }
 // });
 
-// router.get("/:id", async (req, res) => {
-//     try {
-//         const response = await Post.findOne({
-//           where: {
-//             topic: req.body.post_topic,
-//             id: req.params.id,
-//           },
-//           attributes: ["id", "title", "post_topic", "post_text", "created_at"],
-//           include: [
-//             {
-//               model: User,
-//               attribute: ["username"],
-//             },
-//             {
-//               model: Comment,
-//               attributes: [
-//                 "id",
-//                 "comment_text",
-//                 "user_id",
-//                 "post_id",
-//                 "created_at",
-//               ],
-//               include: {
-//                 model: User,
-//                 attribute: ["username"],
-//               },
-//             },
-//           ],
-//         });
-//         if (!response) {
-//           res.status(400).json(err);
-//         }
-//         res.status(200).json(response);
-//       } catch (err) {
-//         res.status(500).json(err);
-//       }
-// })
+router.get("/:id", async (req, res) => {
+    try {
+        const response = await Post.findOne({
+          where: {
+            topic: req.body.post_topic,
+            id: req.params.id,
+          },
+          attributes: ["id", "title", "post_topic", "post_text", "created_at"],
+          include: [
+            {
+              model: User,
+              attribute: ["username"],
+            },
+            {
+              model: Comment,
+              attributes: [
+                "id",
+                "comment_text",
+                "user_id",
+                "post_id",
+                "created_at",
+              ],
+              include: {
+                model: User,
+                attribute: ["username"],
+              },
+            },
+          ],
+        });
+        if (!response) {
+          res.status(400).json(err);
+        }
+        res.status(200).json(response);
+      } catch (err) {
+        res.status(500).json(err);
+      }
+})
 
 
 
