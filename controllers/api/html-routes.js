@@ -46,10 +46,6 @@ const { User, Post, Comment, Vote, Question } = require("../../models");
 //           attributes: ["username"],
 //         },
 //         {
-//           model: Question,
-//           attributes: ["q_text"]
-//         },
-//         {
 //           model: Comment,
 //           attributes: [
 //             "id",
@@ -83,10 +79,6 @@ const { User, Post, Comment, Vote, Question } = require("../../models");
 //             {
 //               model: User,
 //               attribute: ["username"],
-//             },
-//             {
-//               model: Question,
-//               attribute: ["q_text"],
 //             },
 //             {
 //               model: Comment,

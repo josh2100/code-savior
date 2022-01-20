@@ -60,6 +60,6 @@ Comment.belongsTo(User, {
 
 
 
-module.exports = { User, Post, Vote, Comment };
+module.exports = { User, Post, Vote, Comment, Question };
 
 

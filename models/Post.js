@@ -44,7 +44,10 @@ Post.init(
     },
     post_topic: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: [6]
+      }
     },
     post_text: {
       type: DataTypes.TEXT,
