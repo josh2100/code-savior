@@ -18,7 +18,11 @@ const withAuth = require("../../utils/auth");
 // Get All Questions (api/js)
 router.get("/", async (req, res) => {
     try {
-    const allQuestions = await Question.findAll();
+    const allQuestions = await Question.findAll({
+        where: {
+            topic: 'js'
+        }
+    });
     res.status(200).json(allQuestions);
     } catch (err) {
     res.status(500).json(err);
@@ -30,6 +34,7 @@ router.post("/", async (req, res) => {
   try {
     const newQuestion = await Question.create({
       title: req.body.title,
+      topic: req.body.topic,
       answer1: req.body.answer1,
       answer2: req.body.answer2,
       answer3: req.body.answer3,

@@ -11,6 +11,10 @@ Question.init(
       autoIncrement: true,
       allowNull: false,
     },
+    topic: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
     title: {
       type: DataTypes.TEXT,
       allowNull: false,
