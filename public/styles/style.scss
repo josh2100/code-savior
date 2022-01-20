@@ -1,10 +1,6 @@
-// Universal Styles
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-a, a::after, a:hover, a::before {
-    text-decoration: none;
-}
+@import "_globals";
+@import "_variables";
+@import "_hero";
+@import "_header";
+@import "_mixins";
+@import "_footer";

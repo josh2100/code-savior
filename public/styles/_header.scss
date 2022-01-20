@@ -1,0 +1,79 @@
+@import "_mixins";
+
+// Welcome Message
+.welcome {
+    color: $darkBlueGreen;
+    font-size: $font-xlrg;
+    margin: auto;
+    padding: 10px;
+}
+
+// Nav-Bar Styles
+.header {
+
+    &-navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 1.25rem;
+        color: $darkBlueGreen;
+           }
+
+    &-nav-links a {
+        color: $darkBlueGreen;
+    }
+
+    &-links {
+        display: flex;
+        gap: 8em;
+        font-size: $font-med;
+
+    &-links li {
+        padding: 5px 14px;
+    }
+    }
+}
+
+  // Checkbox
+  input[type=checkbox]{
+    display: none;
+   } 
+
+   // Hamburger Menu
+   .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    user-select: none;
+   }
+
+// Hamburger Menu Media Query
+    @include breakpoint-down (medium) {
+
+   .header-links { 
+    background-color: white;
+    display: none;
+    position: absolute;
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: $font-med;
+   }
+
+   .header-links li:hover {
+    display: inline-block;
+    text-decoration: underline;
+   }
+
+   .header-links li + li {
+    margin-top: 0.75rem;
+   }
+
+   input[type=checkbox]:checked ~ .header-links{
+    display: block;
+   }
+
+   .hamburger {
+    display: block;
+   }
+   }
