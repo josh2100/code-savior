@@ -11,30 +11,29 @@ Question.init(
       autoIncrement: true,
       allowNull: false,
     },
-    q_text: {
+    title: {
       type: DataTypes.TEXT,
       allowNull: false,
-      unique: true,
     },
-    q_possible: {
-      type: DataTypes.ARRAY,
-      allowNull: false,
-    },
-    q_answer: {
+    answer1: {
       type: DataTypes.TEXT,
       allowNull: false,
-      unique: true,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
+    answer2: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
-    post_id: {
-      model: "post",
-      key: "id",
+    answer3: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    answer4: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+    },
+    correctAnswer: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
   },
   {
@@ -42,7 +41,7 @@ Question.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "vote",
+    modelName: "question",
   }
 );
 
