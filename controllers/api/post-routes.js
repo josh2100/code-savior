@@ -93,8 +93,8 @@ router.post("/", withAuth, async (req, res) => {
   try {
     const response = await Post.create({
       title: req.body.title,
-      post_text: req.body.post_text,
-      post_topic: req.body.post_topic,
+      topic: req.body.post_topic,
+      text: req.body.post_text,
       user_id: req.session.id,
     });
 
