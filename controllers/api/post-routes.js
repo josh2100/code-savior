@@ -89,13 +89,13 @@ router.get("/:id", async (req, res) => {
 });
 
 // Create a Post route
-router.post("/", withAuth, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const response = await Post.create({
       title: req.body.title,
-      topic: req.body.post_topic,
-      text: req.body.post_text,
-      user_id: req.session.id,
+      topic: req.body.topic,
+      text: req.body.text,
+      user_id: req.body.user_id,
     });
 
     res.status(200).json(response);
