@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=“en”>
+<html lang="en">
 
 <head>
     <meta charset=“UTF-8">
@@ -23,16 +23,29 @@
                 {{/if}}
             </nav>
         </header>
-        <main>
-            {{{ body }}}
-        </main>
-        <footer>
-            Thanks for visiting!
-        </footer>
+
+        <div class="dropdown">
+            <p>Choose Your Topic</p>
+            <div class="dropdown-content">
+                <a href="/html">HTML</a>
+                <a href="/css">CSS</a>
+                <a href="/js">JavaScript</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <main>
+        {{{ body }}}
+    </main>
     </div>
     {{#if loggedIn}}
-    <script src=“/javascript/logout.js”></script>
+    <script src="/javascript/logout.js"></script>
     {{/if}}
 </body>
+<footer class="footer">
+    Dedicated to the pursuit of knowledge to better help the world.
+</footer>
 
 </html>
