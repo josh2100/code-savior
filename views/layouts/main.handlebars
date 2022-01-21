@@ -20,26 +20,25 @@
                 <button id=“logout” class=“btn-no-style”>logout</button>
                 {{else}}
                 <a href=“/login”>login</a>
-                {{/if}} -->
+                {{/if}}
             </nav>
         </header>
 
-        <section class="hero">
-            <div class="hero-wrapper">
-                <label class="hero-message" for="learning-topic">Choose a topic:</label><br>
-                <div class="hero-box">
-                    <select name="learning-topic" id="learning-topic">
-                        <option value="HTML">HTML</option>
-                        <option value="CSS">CSS</option>
-                        <option value="javascript">JavaScript</option>
-                    </select>
-                </div>
+        <div class="dropdown">
+            <p>Choose Your Topic</p>
+            <div class="dropdown-content">
+                <a href="/html">HTML</a>
+                <a href="/css">CSS</a>
+                <a href="/js">JavaScript</a>
             </div>
-        </section>
+        </div>
+    </div>
+    </div>
+    </section>
 
-        <main>
-            {{{ body }}}
-        </main>
+    <main>
+        {{{ body }}}
+    </main>
     </div>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
