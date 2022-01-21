@@ -3,12 +3,12 @@ const sequelize = require("../../config/connection");
 const { Question } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// Get All Questions (api/js)
+// Get All Questions (api/css)
 router.get("/", async (req, res) => {
   try {
     const allQuestions = await Question.findAll({
       where: {
-        topic: "js",
+        topic: "css",
       },
     });
     res.status(200).json(allQuestions);
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Create new question (api/js)
+// Create new question (api/html)
 router.post("/", async (req, res) => {
   try {
     const newQuestion = await Question.create({
@@ -35,13 +35,13 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Delete a question (api/js)
+// Delete a question (api/html)
 router.delete("/:id", async (req, res) => {
   try {
     const deleteQuestion = await Question.destroy({
       where: {
         id: req.params.id,
-      }
+      },
     });
     if (!deleteQuestion) {
       res.status(400).json({ message: "No question associated with this id" });
@@ -51,6 +51,5 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;

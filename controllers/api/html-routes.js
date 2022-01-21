@@ -1,110 +1,55 @@
 const router = require("express").Router();
-const { User, Post, Comment, Vote, Question } = require("../../models");
+const sequelize = require("../../config/connection");
+const { Question } = require("../../models");
+const withAuth = require("../../utils/auth");
 
-// Questions
-// GET all html questions (api/html/questions)
+// Get All Questions (api/html)
+router.get("/", async (req, res) => {
+  try {
+    const allQuestions = await Question.findAll({
+      where: {
+        topic: "html",
+      },
+    });
+    res.status(200).json(allQuestions);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-// POST a new html question (api/html/questions)
+// Create new question (api/html)
+router.post("/", async (req, res) => {
+  try {
+    const newQuestion = await Question.create({
+      title: req.body.title,
+      topic: req.body.topic,
+      answer1: req.body.answer1,
+      answer2: req.body.answer2,
+      answer3: req.body.answer3,
+      answer4: req.body.answer4,
+      correctAnswer: req.body.correctAnswer,
+    });
+    res.status(200).json(newQuestion);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-// Resources
-// GET all html posts (api/html/posts)
-// Use where: property to only grab posts with topic: html
-
-// POST a new html post (api/html/posts)
-
-// router.get("/:topic/:questions", async (req, res) => {
-//     try {
-//         const response = await Question.findAll({
-//           where: {
-
-//           }
-//         })
-//     }
-// })
-
-// router.get("/", async (req, res) => {
-//   try {
-//     const response = await Post.findAll({
-//         where: {
-//             topic = req.body.post_topic
-//         },
-//       attributes: [
-//         "id",
-//         "title",
-//         "post_text",
-//         "created_at",
-//         [
-//           sequelize.literal(
-//             "SELECT COUNT(*) FROM vote WHERE post_id = vote.post.id"
-//           ),
-//         ],
-//       ],
-//       order: [["created_at", "DESC"]],
-//       include: [
-//         {
-//           model: User,
-//           attributes: ["username"],
-//         },
-//         {
-//           model: Comment,
-//           attributes: [
-//             "id",
-//             "comment_text",
-//             "user_id",
-//             "post_id",
-//             "created_at",
-//           ],
-//           include: {
-//             model: User,
-//             attributes: ["username"],
-//           },
-//         },
-//       ],
-//     });
-//     res.status(200).json(response);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-router.get("/:id", async (req, res) => {
-    try {
-        const response = await Post.findOne({
-          where: {
-            topic: req.body.post_topic,
-            id: req.params.id,
-          },
-          attributes: ["id", "title", "post_topic", "post_text", "created_at"],
-          include: [
-            {
-              model: User,
-              attribute: ["username"],
-            },
-            {
-              model: Comment,
-              attributes: [
-                "id",
-                "comment_text",
-                "user_id",
-                "post_id",
-                "created_at",
-              ],
-              include: {
-                model: User,
-                attribute: ["username"],
-              },
-            },
-          ],
-        });
-        if (!response) {
-          res.status(400).json(err);
-        }
-        res.status(200).json(response);
-      } catch (err) {
-        res.status(500).json(err);
-      }
-})
-
-
+// Delete a question (api/html)
+router.delete("/:id", async (req, res) => {
+  try {
+    const deleteQuestion = await Question.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!deleteQuestion) {
+      res.status(400).json({ message: "No question associated with this id" });
+    }
+    res.status(200).json(deleteQuestion);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
