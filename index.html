@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Quicksand&display=swap" rel="stylesheet">
+    <title>Code Savior</title>
+</head>
+
+<body>
+    <header class="header">
+        <h2 class="welcome">Welcome to Code Savior!</h2>
+
+        <nav class="header-navbar">
+            <div class="container flex flex-jc-sb flex-ai-c">
+
+                <ul class="nav-links">
+                    <input type="checkbox" id="checkbox_toggle" />
+                    <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+                    <div class="header-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#plans">Contact Us</a></li>
+                    </div>
+                </ul>
+        </nav>
+    </header>
+    <!-- {{#if loggedIn}}
+                <a href=“/dashboard”>dashboard</a>
+                <button id=“logout” class=“btn-no-style”>logout</button>
+                {{else}}
+                <a href=“/login”>login</a>
+                {{/if}} -->
+    </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-wrapper">
+            <label class="hero-message" for="learning-topic">Choose a topic:</label><br>
+            <div class="hero-box">
+                <select name="learning-topic" id="learning-topic">
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="javascript">JavaScript</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- <main>
+            {{{ body }}}
+        </main>
+    </div>
+    <!-- {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}} -->
+</body>
+<footer class="footer">
+    Dedicated to the pursuit of knowledge to better help the world.
+</footer>
+
+</html>

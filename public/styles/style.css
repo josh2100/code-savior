@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+
+a, a::after, a:hover, a::before {
+  text-decoration: none;
+  list-style: none;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex-jc-c {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flex-jc-sb {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.flex-jc-sa {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.flex-ai-c {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.hero-message {
+  position: static;
+  padding: 10px;
+  font-size: 2rem;
+  bottom: -25px;
+}
+
+.hero-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.hero-wrapper {
+  background-color: #8DDBCF;
+  -webkit-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  padding: 100px;
+  width: 50%;
+  height: 100%;
+  border: 2px solid red;
+}
+
+.welcome {
+  color: #0B99BB;
+  font-size: 2rem;
+  margin: auto;
+  padding: 10px;
+}
+
+.header-navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 1.25rem;
+  color: #0B99BB;
+}
+
+.header-nav-links a {
+  color: #0B99BB;
+}
+
+.header-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8em;
+  font-size: 1rem;
+}
+
+.header-links-links li {
+  padding: 5px 14px;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@media (max-width: 63.9375em) {
+  .header-links {
+    background-color: white;
+    display: none;
+    position: absolute;
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 1rem;
+  }
+  .header-links li:hover {
+    display: inline-block;
+    text-decoration: underline;
+  }
+  .header-links li + li {
+    margin-top: 0.75rem;
+  }
+  input[type=checkbox]:checked ~ .header-links {
+    display: block;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  color: #0B99BB;
+  background-color: #BFCFCC;
+  font-size: 1rem;
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */

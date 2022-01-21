@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset=“UTF-8">
+    <meta name=“viewport” content=“width=device-width, initial-scale=1.0">
+    <title>Code Savior</title>
+    <link rel=“stylesheet” href=“/stylesheets/style.css”>
+</head>
+
+<body>
+    <div class=“wrapper”>
+        <header>
+            <h1>
+                <a href=“/”>Code Savior</a>
+            </h1>
+            <nav>
+                {{#if loggedIn}}
+                <a href=“/dashboard”>dashboard</a>
+                <button id=“logout” class=“btn-no-style”>logout</button>
+                {{else}}
+                <a href=“/login”>login</a>
+                {{/if}}
+            </nav>
+        </header>
+
+        <div class="dropdown">
+            <p>Choose Your Topic</p>
+            <div class="dropdown-content">
+                <a href="/html">HTML</a>
+                <a href="/css">CSS</a>
+                <a href="/js">JavaScript</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <main>
+        {{{ body }}}
+    </main>
+    </div>
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
+</body>
+<footer class="footer">
+    Dedicated to the pursuit of knowledge to better help the world.
+</footer>
+
+</html>
