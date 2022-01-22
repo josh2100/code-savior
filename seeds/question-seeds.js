@@ -2,6 +2,7 @@ const { Question } = require('../models');
 
 const questionData = [
     {
+      topic: "js",
       title: "What does JSON stand for?",
       answer1: "JavaScript Sequential Oriented Notation",
       answer2: "JavaScript Object Notation",
@@ -10,6 +11,7 @@ const questionData = [
       correctAnswer: "answer2",
     },
     {
+      topic: "js",
       title: "Select the nullish coalescing operator operator",
       answer1: "??",
       answer2: "&&",
@@ -18,6 +20,7 @@ const questionData = [
       correctAnswer: "answer3",
     },
     {
+      topic: "js",
       title: "Which of the following is an example of a template literal?",
       answer1: "console.log('do JavaScript quizzes' + num + ' times a day')",
       answer2: "alert('use leetcode' + num+ ' times a week')",
@@ -26,6 +29,7 @@ const questionData = [
       correctAnswer: "answer3",
     },
     {
+      topic: "js",
       title: "Select the or operator",
       answer1: "??",
       answer2: "&&",
@@ -34,6 +38,7 @@ const questionData = [
       correctAnswer: "answer3",
     },
     {
+      topic: "js",
       title: "Which of the following is an example of an array?",
       answer1: "let animals = ['Lions', 'Tigers', 'Bears]",
       answer2: "let animals = {'Lions', 'Tigers', 'Bears]}",
@@ -42,6 +47,7 @@ const questionData = [
       correctAnswer: "answer1",
     },
     {
+      topic: "js",
       title: "Select the one that is NOT a comparison operator",
       answer1: "!=",
       answer2: "===",
@@ -50,6 +56,7 @@ const questionData = [
       correctAnswer: "answer4",
     },
     {
+      topic: "js",
       title: "Select an example of camel case",
       answer1: "HIGH_SCORES",
       answer2: "high_scores",
@@ -58,6 +65,7 @@ const questionData = [
       correctAnswer: "answer4",
     },
     {
+      topic: "js",
       title: "Which of the following is NOT a Javascript data type?",
       answer1: "Undefined",
       answer2: "String",
@@ -66,6 +74,7 @@ const questionData = [
       correctAnswer: "answer4",
     },
     {
+      topic: "js",
       title: "Which of the following is an example of a primitive type?",
       answer1: "Boolean",
       answer2: "Object",
@@ -74,6 +83,7 @@ const questionData = [
       correctAnswer: "answer1",
     },
     {
+      topic: "js",
       title: "The method alert() is built into what object?",
       answer1: "Window",
       answer2: "Error",
