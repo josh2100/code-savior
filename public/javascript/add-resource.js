@@ -1,9 +1,11 @@
 async function addResource(event) {
   event.preventDefault();
 
-  const title = document.querySelector("#post-title").value().trim();
-  const topic = document.querySelector("#post-topic").value().trim();
-  const text = document.querySelector("#post-text").value().trim();
+  const title = document.querySelector('input[name="title"]').value;
+  const topic = document.querySelector('input[name="topic"]').value;
+  const text = document.querySelector('textarea[name="text"]').value;
+  const user_id = document.querySelector('input[name="user_id"]').value;
+//   const user_id = 2;
 
   const response = await fetch("/api/posts", {
     method: "Post",
@@ -11,15 +13,17 @@ async function addResource(event) {
       title,
       topic,
       text,
+      user_id,
     }),
     Headers: { "Content-Type": "application/json" },
   });
 
   if (response.ok) {
-    document.location.reload("/");
+    document.location.reload('/profile');
   } else {
     response.statusText;
   }
+
 }
 
-document.querySelector("#resources").addEventListener("click", addResource);
+document.querySelector(".new-post-form").addEventListener("submit", addResource);

@@ -96,11 +96,11 @@ router.put("/:id", withAuth, async (req, res) => {
 });
 
 // User login route
-router.put("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const response = await User.findOne({
       where: {
-        id: req.params.id,
+        email: req.body.email,
       },
     });
     if (!response) {

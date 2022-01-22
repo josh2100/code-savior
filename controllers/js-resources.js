@@ -13,6 +13,9 @@ const { Post, User, Comment} = require("../models");
 // get all posts js resources
 router.get("/", (req, res) => {
     Post.findAll({
+      where: {
+        topic: 'js'
+      },
       attributes: [
         "id",
         "title",
