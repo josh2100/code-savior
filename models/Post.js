@@ -46,7 +46,7 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [3]
+        len: [1]
       }
     },
     text: {

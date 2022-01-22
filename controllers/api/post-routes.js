@@ -13,16 +13,16 @@ router.get("/", async (req, res) => {
       attributes: [
         "id",
         "title",
-        "post_topic",
-        "post_text",
-        "created_at",
-        [
-          sequelize.literal(
-            "SELECT COUNT(*) FROM vote WHERE post_id = vote.post.id"
-          ),
-        ],
+        "topic",
+        "text",
+        // "created_at"
+        // [
+        //   sequelize.literal(
+        //     "SELECT COUNT(*) FROM vote WHERE post_id = vote.post.id"
+        //   ),
+        // ],
       ],
-      order: [["created_at", "DESC"]],
+      // order: [["created_at", "DESC"]],
       include: [
         {
           model: User,

@@ -1,0 +1,40 @@
+<section>
+  <h2>Create New Post</h2>
+
+  <form class="new-post-form">
+    <div>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" />
+    </div>
+    <div>
+      <label for="topic">Topic</label>
+      <input type="text" id="topic" name="topic" />
+    </div>
+    <div>
+      <label for="text">Blog Text</label>
+<textarea id="text" name="text" rows="4" cols="50"></textarea>
+    </div>
+    <div>
+      <label for="user_id">User Id</label>
+      <input type="number" id="user_id" name="user_id" />
+    </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</section>
+
+<script src="/javascript/add-resource.js"></script>
+
+{{!-- {{#if posts.length}}
+<section>
+  <h2> Your Posts </h2>
+  <ol>
+    {{#each posts as |post|}}
+  <li>
+    {{> post-info post}}
+    <a href= "/dashboard/edit/{{post.id}}" class= "edit-link">Edit post</a>
+  </li>
+   {{/each}}
+  </ol>
+</section>
+{{/if}} --}}
+
