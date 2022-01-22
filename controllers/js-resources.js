@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment} = require("../models");
+const { Post, User, Comment } = require("../models");
 
 // Get and render a homepage
 // router.get("/", (req, res) => {
@@ -21,12 +21,12 @@ router.get("/", (req, res) => {
         "title",
         "topic",
         "text",
-        // [
-        //   sequelize.literal(
-        //     "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
-        //   ),
-        //   "vote_count",
-        // ],
+        [
+          sequelize.literal(
+            "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+          ),
+          "vote_count",
+        ],
       ],
       include: [
         {
