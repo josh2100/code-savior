@@ -15,12 +15,13 @@ router.get("/", async (req, res) => {
         "title",
         "topic",
         "text",
-        // "created_at"
-        // [
-        //   sequelize.literal(
-        //     "SELECT COUNT(*) FROM vote WHERE post_id = vote.post.id"
-        //   ),
-        // ],
+        // "created_at",
+        [
+          sequelize.literal(
+            "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+          ),
+          "vote_count",
+        ],
       ],
       // order: [["created_at", "DESC"]],
       include: [
