@@ -27,17 +27,16 @@ router.get("/:id", async (req, res) => {
       include: [
         {
           model: Post,
-          attributes: ["id", "title", "post_text", "created_at"],
+          attributes: ["id", "title", "text", "created_at"],
         },
         {
           model: Comment,
           attributes: ["id", "comment_text", "created_at"],
-          include: [
+          include: 
             {
               model: Post,
               attributes: ["title"],
             },
-          ],
         },
         {
           model: Post,
