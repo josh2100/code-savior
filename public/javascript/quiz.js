@@ -1,255 +1,206 @@
-// //global variables
-// let initializeVariables = async () => {
-//     let countdown = document.querySelector("#countdown");
-// }
-
-// function fun () {
-//     const countdown = document.querySelector('input[name="countdown"]').value;
-//     console.log(countdown);
-// };
-
-// document.querySelector(".btn").addEventListener("submit", fun);
-
-
-
-// initializeVariables();
-// let countdown;
-// let countdown = $("#countdown");
+//global variables
 // let countdown = document.querySelector("#countdown");
 let timeLeft = 300;
 let startPageArray = [];
 let currentQuestion = 0;
+let questionArray = [
+];
 
-const questionArray = [];
+const fetchQuiz = async () => {
+  // async function fetchQuiz(event) {
+  const response = await fetch("/api/js", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
 
-// window.addEventListener("DOMContentLoaded", (event) => {
-//   console.log("DOM fully loaded and parsed");
-// });
+  if (response.ok) {
+    const data = await response.json();
 
-// //https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
-// // const NO_OF_HIGH_SCORES = 10;
-// // const HIGH_SCORES = "highScores";
-// // const highScoreString = localStorage.getItem(HIGH_SCORES);
-// // const highScores = JSON.parse(highScoreString) ?? [];
+    data.forEach(({ title, answer1, answer2, answer3, answer4, correctAnswer}) => {
+         questionArray.push( {title, answer1, answer2, answer3, answer4, correctAnswer} );
+    })
+   
+    console.log(questionArray);
+  } else {
+    response.statusText;
+  }
+};
 
-// // function checkHighScore(score) {
-// //   const highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? [];
-// //   const lowestScore = highScores[NO_OF_HIGH_SCORES - 1]?.score ?? 0;
+// Captures HTML at start so it can be replaced when game ends
+const recordStartPage = () => {
+  startPageArray = $("main").html();
+};
 
-// //   if (score > lowestScore) {
-// //     saveHighScore(score, highScores);
-// //     showHighScores();
-// //   }
-// // }
+// Wait for document to render
+window.addEventListener("DOMContentLoaded", async (event) => {
+  console.log("DOM fully loaded and parsed");
 
-// function saveHighScore(score, highScores) {
-//   const name = prompt("You got a highscore! Enter name:");
-//   const newScore = { score, name };
-//   // timeLeft = 0;
+  recordStartPage();
 
-//   // 1. Add to list
-//   // highScores.push(newScore);
+  // Fetch questions
+  fetchQuiz();
 
-//   // // 2. Sort the list
-//   // highScores.sort((a, b) => b.score - a.score);
+  $("#start-btn").on("click", function () {
+    startGame();
+  });
+});
 
-//   // // 3. Select new list
-//   // highScores.splice(NO_OF_HIGH_SCORES);
+/// endGame fires checkHighScore
+function checkHighScore(score) {
+  const highScores = 1; // Placeholder
+  const lowestScore = 1; // placeholder
 
-//   // // 4. Save to local storage
-//   // localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
-// }
+  if (score > lowestScore) {
+    saveHighScore(score, highScores);
+    showHighScores();
+  }
+}
 
-// // let showHighScores = function () {
-// //   // Clear screen
-// //   $("main").html("");
+function saveHighScore(score, highScores) {
+    /// Change to Modal
+  const accuracyModal = alert("Your accuracy was:");
+  restartGame();
+}
 
-// //   // Display end game screen
-// //   $("main").append(
-// //     "<h2 class='col-8 offset-2 col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4 text-white text-center'>HIGH SCORES<h2>"
-// //   );
-// //   $("main").append(
-// //     "<ol id='highScores' class='col-8 offset-2 col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4 text-white text-center'></ol>"
-// //   );
+let showHighScores = function () {};
+/////
 
-// //   //https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
-// //   const highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? [];
-// //   const highScoreList = document.getElementById(HIGH_SCORES);
+// Create restart button
+$("main").append("<button id='restart' class=''>Go Back</button>");
+// Add event listener to restart/go back button
+$("#restart").on("click", function () {
+  restartGame();
+});
 
-// //   highScoreList.innerHTML = highScores
-// //     .map((score) => `<li>${score.score}............${score.name}`)
-// //     .join("");
+const endGame = function () {
+  console.log("game end");
+  checkHighScore(timeLeft);
+};
 
-//   // Create restart button
-//   $("main").append(
-//     "<button id='restart' class='col-8 offset-2 col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4 text-white text-center bg-secondary'>Go Back</button>"
-//   );
-// //   // Add event listener to restart/go back button
-// //   $("#restart").on("click", function () {
-// //     restartGame();
-// //   });
+const buildQuestionTemplate = () => {
+  // Check if there are any more questions
+  const checkIfGameEnd = function () {
+    if (currentQuestion >= questionArray.length) {
+      endGame();
+    } else if (timeLeft <= 0) {
+      endGame();
+    } else {
+      buildQuestionTemplate();
+    }
+  };
 
-// //   // Create clear highscores button
-// //   $("main").append(
-// //     "<button id='clearScores' class='col-8 offset-2 col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4 text-white text-center bg-secondary mt-2'>Clear High Scores</button>"
-// //   );
-// //   // Add event listener to restart/go back button
-// //   $("#clearScores").on("click", function () {
-// //     alert("Clearing Scores");
-// //     window.localStorage.removeItem("highScores");
-// //     window.location.reload();
-// //   });
-// // };
+  // Check accuracy functions
+  const correct = () => {
+    currentQuestion += 1;
+    checkIfGameEnd();
+  };
+  const incorrect = () => {
+    currentQuestion += 1;
+    timeLeft -= 10;
+    checkIfGameEnd();
+  };
 
-// const endGame = function () {
-//   checkHighScore(timeLeft);
-// };
+  // Clear screen
+  $("main").html("");
 
-// // Captures HTML at start so it can be replaced when game ends
-// const recordStartPage = () => {
-//   startPageArray = $("main").html();
-// };
+  // Add question
+  $("main").append(
+    "<br><br><p id='title' class='col-8 offset-2 col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4 text-white'></p><br><br>"
+  );
 
-// // Wait for document to render
-// $(document).ready(() => {
-//   recordStartPage();
+  /// Add answer buttons
+  $("main").append(
+    "<button id='answer1' class='col-6 offset-3 col-md-6 offset-md-3 text-white bg-secondary mt-2 p-2'>ANSWER1</button>"
+  );
+  $("main").append(
+    "<button id='answer2' class='col-6 offset-3 col-md-6 offset-md-3 text-white bg-secondary mt-2 p-2'>ANSWER2</button>"
+  );
+  $("main").append(
+    "<button id='answer3' class='col-6 offset-3 col-md-6 offset-md-3 text-white bg-secondary mt-2 p-2'>ANSWER3</button>"
+  );
+  $("main").append(
+    "<button id='answer4' class='col-6 offset-3 col-md-6 offset-md-3 text-white bg-secondary mt-2 p-2'>ANSWER4</button>"
+  );
 
-//   $("#start-btn").on("click", function () {
-//     startGame();
-//   });
+  // Fill in question title
+  $("#title").text(questionArray[currentQuestion].title);
+  // Fill in possible answers
+  $("#answer1").text(questionArray[currentQuestion].answer1);
+  $("#answer2").text(questionArray[currentQuestion].answer2);
+  $("#answer3").text(questionArray[currentQuestion].answer3);
+  $("#answer4").text(questionArray[currentQuestion].answer4);
 
-//   // $("#highscoreChart").on("click", function () {
-//   //   showHighScores();
-//   //   timeLeft = 0;
-//   // });
-// });
+  // Check accuracy
+  $("#answer1").on("mousedown", function () {
+    if (questionArray[currentQuestion].correctAnswer == "answer1") {
+      correct();
+    } else {
+      incorrect();
+    }
+  });
 
-// const buildQuestionTemplate = () => {
-//   // Check if there are any more questions
-//   const checkIfGameEnd = function () {
-//     if (currentQuestion >= questionArray.length) {
-//       endGame();
-//     } else if (timeLeft <= 0) {
-//       endGame();
-//     } else {
-//       buildQuestionTemplate();
-//     }
-//   };
+  $("#answer2").on("mousedown", function () {
+    if (questionArray[currentQuestion].correctAnswer == "answer2") {
+      correct();
+    } else {
+      incorrect();
+    }
+  });
 
-//   // Check accuracy functions
-//   const correct = () => {
-//     currentQuestion += 1;
-//     checkIfGameEnd();
-//   };
-//   const incorrect = () => {
-//     currentQuestion += 1;
-//     timeLeft -= 10;
-//     checkIfGameEnd();
-//   };
+  $("#answer3").on("mousedown", function () {
+    if (questionArray[currentQuestion].correctAnswer == "answer3") {
+      correct();
+    } else {
+      incorrect();
+    }
+  });
 
-//   // Clear screen
-//   $("main").html("");
+  $("#answer4").on("mousedown", function () {
+    if (questionArray[currentQuestion].correctAnswer == "answer4") {
+      correct();
+    } else {
+      incorrect();
+    }
+  });
+};
 
-//   // Add question
-//   $("main").append(
-//     "<br><br><p id='title' class='col-8 offset-2 col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-4 text-white'></p><br><br>"
-//   );
+let startGame = function () {
+  // Clear screen
+  $("main").html("");
 
-//   /// Add answer buttons
-//   $("main").append(
-//     "<button id='answer1' class='col-6 offset-3 col-md-6 offset-md-3 text-white bg-secondary mt-2 p-2'>ANSWER1</button>"
-//   );
-//   $("main").append(
-//     "<button id='answer2' class='col-6 offset-3 col-md-6 offset-md-3 text-white bg-secondary mt-2 p-2'>ANSWER2</button>"
-//   );
-//   $("main").append(
-//     "<button id='answer3' class='col-6 offset-3 col-md-6 offset-md-3 text-white bg-secondary mt-2 p-2'>ANSWER3</button>"
-//   );
-//   $("main").append(
-//     "<button id='answer4' class='col-6 offset-3 col-md-6 offset-md-3 text-white bg-secondary mt-2 p-2'>ANSWER4</button>"
-//   );
+  console.log("game started");
 
-//   // Fill in question title
-//   $("#title").text(questionArray[currentQuestion].title);
-//   // Fill in possible answers
-//   $("#answer1").text(questionArray[currentQuestion].answer1);
-//   $("#answer2").text(questionArray[currentQuestion].answer2);
-//   $("#answer3").text(questionArray[currentQuestion].answer3);
-//   $("#answer4").text(questionArray[currentQuestion].answer4);
+  // Reset variables
+  timeLeft = 300;
+  currentQuestion = 0;
 
-//   // Check accuracy
-//   $("#answer1").on("mousedown", function () {
-//     if (questionArray[currentQuestion].correctAnswer == "answer1") {
-//       correct();
-//     } else {
-//       incorrect();
-//     }
-//   });
+  //https://www.freecodecamp.org/news/javascript-timers-everything-you-need-to-know-5f31eaa37162/
+  let clock = () => {
+    if (timeLeft > 1) {
+      timeLeft--;
+    } else {
+      showHighScores(timeLeft);
+      endGame();
+      clearInterval(increment);
+    }
 
-//   $("#answer2").on("mousedown", function () {
-//     if (questionArray[currentQuestion].correctAnswer == "answer2") {
-//       correct();
-//     } else {
-//       incorrect();
-//     }
-//   });
+    if (!questionArray[currentQuestion]) {
+      //   showHighScores(timeLeft);
+      clearInterval(increment);
+    }
+  };
+  // Start timer
+  let increment = setInterval(clock, 1000);
 
-//   $("#answer3").on("mousedown", function () {
-//     if (questionArray[currentQuestion].correctAnswer == "answer3") {
-//       correct();
-//     } else {
-//       incorrect();
-//     }
-//   });
+  // Build question template
+  buildQuestionTemplate();
+};
 
-//   $("#answer4").on("mousedown", function () {
-//     if (questionArray[currentQuestion].correctAnswer == "answer4") {
-//       correct();
-//     } else {
-//       incorrect();
-//     }
-//   });
-// };
-
-// let startGame = function () {
-//   // Clear screen
-//   $("main").html("");
-
-//   // Reset variables
-//   timeLeft = 300;
-//   currentQuestion = 0;
-
-//   //https://www.freecodecamp.org/news/javascript-timers-everything-you-need-to-know-5f31eaa37162/
-//   let clock = () => {
-//     if (timeLeft > 1) {
-//       timeLeft--;
-//       countdown.text(timeLeft);
-//     } else {
-//       showHighScores(timeLeft);
-//       endGame();
-//       clearInterval(increment);
-//     }
-
-//     if (!questionArray[currentQuestion]) {
-//       showHighScores(timeLeft);
-//       clearInterval(increment);
-//     }
-//   };
-//   // Start timer
-//   let increment = setInterval(clock, 1000);
-
-//   // Build question template
-//   buildQuestionTemplate();
-// };
-
-// let restartGame = function () {
-//   // Loads saved HTML
-//   $("main").html(startPageArray);
-//   // Re-Apply Event Listener
-//   $("#start-btn").on("click", function () {
-//     startGame();
-//   });
-// };
-
-console.log("HEY");
-// window.alert('hey');
+let restartGame = function () {
+  // Loads saved HTML
+  $("main").html(startPageArray);
+  // Re-Apply Event Listener
+  $("#start-btn").on("click", function () {
+    startGame();
+  });
+};
