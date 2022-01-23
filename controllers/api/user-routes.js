@@ -27,7 +27,7 @@ router.get("/:id", async (req, res) => {
       include: [
         {
           model: Post,
-          attributes: ["id", "title", "text", "created_at"],
+          attributes: ["id", "title", "text", "post_url"],
         },
         {
           model: Comment,
@@ -38,12 +38,12 @@ router.get("/:id", async (req, res) => {
               attributes: ["title"],
             },
         },
-        {
-          model: Post,
-          attributes: ["title"],
-          through: Vote,
-          attributes: ["voted_posts"],
-        },
+        // {
+        //   model: Post,
+        //   attributes: ["title"],
+        //   through: Vote,
+        //   attributes: ["voted_posts"],
+        // },
       ],
     });
 
@@ -143,6 +143,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
+
 // User delete route
 router.delete("/:id", async (req, res) => {
   try {
@@ -155,6 +156,7 @@ router.delete("/:id", async (req, res) => {
     if (!response) {
       res.status(400).json({ message: "No user found with this id" });
     }
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }

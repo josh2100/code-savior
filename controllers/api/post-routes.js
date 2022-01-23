@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
         "id",
         "title",
         "topic",
+        "post_url",
         "text",
         // "created_at",
         [
@@ -62,6 +63,7 @@ router.get("/:id", async (req, res) => {
         "id",
         "title",
         "topic",
+        "post_url",
         "text",
         [
           sequelize.literal(
@@ -106,6 +108,7 @@ router.post("/", async (req, res) => {
     const response = await Post.create({
       title: req.body.title,
       topic: req.body.topic,
+      post_url: req.body.post_url,
       text: req.body.text,
       user_id: req.body.user_id,
     });
@@ -140,6 +143,7 @@ router.put("/:id", async (req, res) => {
       {
         title: req.body.title,
         topic: req.body.topic,
+        post_url: req.body.post_url,
         text: req.body.text,
       },
       {

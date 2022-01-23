@@ -2,13 +2,10 @@ const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Post, User, Comment } = require("../models");
 
-// Get and render a homepage
-// router.get("/", (req, res) => {
-
-//   res.render("js", {
-//     loggedIn: req.session.loggedIn,
-//   });
-// });
+// route for main javascript page (js/main)
+router.get("/main", (req, res) => {
+  res.render("js-main");
+});
 
 // get all posts js resources
 router.get("/", (req, res) => {
@@ -20,6 +17,7 @@ router.get("/", (req, res) => {
         "id",
         "title",
         "topic",
+        "post_url",
         "text",
         [
           sequelize.literal(
@@ -44,7 +42,6 @@ router.get("/", (req, res) => {
       ],
     })
       .then((dbPostData) => {
-        console.log('line 45', dbPostData);
         const posts = dbPostData.map((post) => post.get({ plain: true }));
   
         res.render("js", {
@@ -57,8 +54,7 @@ router.get("/", (req, res) => {
         res.status(500).json(err);
       });
   });
-  
-  
+
 
 
 
