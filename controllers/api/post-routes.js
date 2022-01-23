@@ -58,7 +58,18 @@ router.get("/:id", async (req, res) => {
       where: {
         id: req.params.id,
       },
-      attributes: ["id", "title", "post_topic", "post_text", "created_at"],
+      attributes: [
+        "id",
+        "title",
+        "topic",
+        "text",
+        [
+          sequelize.literal(
+            "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+          ),
+          "vote_count",
+        ],
+      ],
       include: [
         {
           model: User,
@@ -128,8 +139,8 @@ router.put("/:id", async (req, res) => {
     const response = await Post.update(
       {
         title: req.body.title,
-        post_topic: req.body.post_topic,
-        post_text: req.body.post_text,
+        topic: req.body.topic,
+        text: req.body.text,
       },
       {
         where: {
