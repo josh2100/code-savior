@@ -104,7 +104,7 @@ router.get('/post/:id', (req, res) => {
     {
       model: User,
     }
-  ]
+  ],
 })
   .then(dbPostData => {
     if (!dbPostData) {
