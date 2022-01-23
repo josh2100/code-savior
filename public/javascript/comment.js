@@ -18,10 +18,12 @@ async function addComment(event) {
       method: "POST",
       body: JSON.stringify({
         comment_text,
-        post_id,
         user_id,
+        post_id,
       }),
-      headers: { "Content:Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (response.ok) {
@@ -30,6 +32,8 @@ async function addComment(event) {
       alert(response.statusText);
     }
   }
+
+  
 }
 
 document.querySelector(".comment-form").addEventListener("submit", addComment);
