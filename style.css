@@ -1,3 +1,11 @@
+/* Root Styles and Color Variables */
+:root {
+    --primary-color: #e8d3a3;
+    --secondary-color: #ffa633;
+    --trimester-color: #3b5a9d;
+    --fourth-color: #4fb2aa;
+}
+
 /* Universal Styles */
 * {
     margin: 0;
@@ -18,15 +26,9 @@ a, a:hover, a::before, a::after {
     text-align: center;
 }
 
-.wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .nav-bar {
-    background-color: purple;
-    color: white;
+    background-color: var(--fourth-color);
+    color: var(--trimester-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -36,11 +38,42 @@ a, a:hover, a::before, a::after {
 
 .nav-bar a {
     font-size: 22px;
-    color: white;
+    color: var(--trimester-color);
 }
 
 .nav-bar a:hover {
     text-decoration: underline;
+}
+
+/* About Us */
+
+/* Hero Section */
+.topic-text {
+    font-size: 40px;
+    text-align: center;
+    margin: 15px;
+    text-decoration: underline;
+}
+
+.topic-text p {
+    color: var(--trimester-color);
+}
+
+.hero {
+    border: 2px solid red;
+}
+
+.content-options {
+    padding: 10px 5px;
+    margin: 15px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.content-options a {
+    margin: 5px;
+    font-size: 80px;
+    color: var(--trimester-color);
 }
 
 /* Footer */
@@ -50,6 +83,6 @@ a, a:hover, a::before, a::after {
     height: 20px;
     bottom: 0;
     left: 0;
-    background-color: purple;
-    color: white;
+    background-color: var(--fourth-color);
+    color: var(--trimester-color);
 }

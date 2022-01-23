@@ -10,12 +10,15 @@
 </head>
 
 <body>
+
+    <!-- Welcome Banner/Message-->
     <section class="welcome-banner">
         <div class="logo-wrapper">
             <h1><a href="#">Welcome to Code Savior!</a> </h1>
         </div>
     </section>
 
+    <!-- Header/Nav-Bar -->
     <header class="header">
         <nav>
             <ul class="nav-bar">
@@ -33,20 +36,25 @@
     </header>
     </section>
 
-    <div class=" dropdown">
-        <p>Choose Your Topic</p>
-        <div class="dropdown-content">
+    <!-- Hero Section/Pick Your Topic Section -->
+    <section class="hero">
+        <div class="topic-text">
+            <p>Choose Your Topic:</p>
+        </div>
+        <div class="content-options">
             <a href="/html">HTML</a>
             <a href="/css">CSS</a>
             <a href="/js/main">JavaScript</a>
         </div>
-
-        <div>
-            <!-- <main>
-            {{{ body }}}
-        </main> -->
         </div>
-        <!-- {{!-- {{#if loggedIn}} --}}
+    </section>
+
+    <div>
+        <main>
+            {{{ body }}}
+        </main>
+    </div>
+    <!-- {{!-- {{#if loggedIn}} --}}
     <script src="/javascript/logout.js"></script>
     {{!-- {{/if}} --}} -->
 </body>
