@@ -20,8 +20,10 @@ async function login(event) {
     });
 
     if (response.ok) {
+      alert('You have successfully logged in!');
       document.location.reload();
     } else {
+      alert('Incorrect email or password');
       alert(response.statusText);
     }
   }

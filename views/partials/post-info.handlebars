@@ -1,7 +1,7 @@
-<article class="post">
+{{!-- <article class="post">
     <div class="title">
         <h2>{{title}}</h2>
-    </div>
+    </div> --}}
     {{!-- <div class="meta">
         {{vote_count}}
         {{format_plural "point" vote_count}}
@@ -13,6 +13,21 @@
         <p>{{comments.length}}
             {{format_plural "comment" comments.length}}</p>
     </div> --}}
+{{!-- </article> --}}
+
+
+<article class="post">
+  <div class="title">
+    <a href="/post/{{id}}">{{title}}</a>
+   <a href="{{post_url}}" target="_blank"><span>({{format_url post_url}})</span></a>
+  </div>
+  <div class="meta">
+    {{vote_count}} {{format_plural "like" vote_count}} for {{user.username}}'s resource 
+    |
+    {{!-- Posted on {{created_at}} --}}
+    |
+    <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+  </div>
 </article>
 
 
