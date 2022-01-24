@@ -145,8 +145,6 @@ const questionData = [
       answer4: "<section />",
       correctAnswer: "",
     },
-
-
 ];
   
   const seedQuestion = () => Question.bulkCreate(questionData);
