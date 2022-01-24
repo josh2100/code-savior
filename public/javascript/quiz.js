@@ -65,13 +65,6 @@ function saveHighScore(score, highScores) {
 let showHighScores = function () {};
 /////
 
-// Create restart button
-$("main").append("<button id='restart' class=''>Go Back</button>");
-// Add event listener to restart/go back button
-$("#restart").on("click", function () {
-  restartGame();
-});
-
 const endGame = function () {
   console.log("game end");
   checkHighScore(timeLeft);
