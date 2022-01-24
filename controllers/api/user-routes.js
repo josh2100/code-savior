@@ -123,10 +123,8 @@ router.post("/login", async (req, res) => {
 
       res
         .status(200)
-        .json({ user: response, message: "You are now logged in!" });
+        .json({ user: response, message: "You are now successfully logged in!" });
     });
-
-    res.status(200).json({ message: "You are successfully logged in!" });
   } catch (err) {
     res.status(500).json(err);
   }
