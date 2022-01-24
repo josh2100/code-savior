@@ -4,18 +4,23 @@ async function login(event) {
   const email = document.querySelector("#email-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
 
+  console.log(email);
+  console.log(password);
+
   if (email && password) {
     const response = await fetch("/api/users/login", {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({
         email,
         password,
       }),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (response.ok) {
-      document.location.replace("/profile");
+      document.location.reload();
     } else {
       alert(response.statusText);
     }
