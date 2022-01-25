@@ -41,7 +41,7 @@ app.use(routes);
 // turn on connection to db and server
 // force: true allows drop if exists functionality to sequelize
 // leave force on false for better performance
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log("Now listening"));
 });
 
