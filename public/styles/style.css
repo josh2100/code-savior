@@ -85,7 +85,7 @@ a, a:hover, a::before, a::after {
 
 /* Footer */
 .footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 20px;
   bottom: 0;

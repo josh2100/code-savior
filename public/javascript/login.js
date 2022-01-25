@@ -4,19 +4,26 @@ async function login(event) {
   const email = document.querySelector("#email-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
 
+  console.log(email);
+  console.log(password);
+
   if (email && password) {
     const response = await fetch("/api/users/login", {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({
         email,
         password,
       }),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (response.ok) {
-      document.location.replace("/profile");
+      alert('You have successfully logged in!');
+      document.location.reload();
     } else {
+      alert('Incorrect email or password');
       alert(response.statusText);
     }
   }
@@ -44,6 +51,7 @@ async function signup(event) {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
+      alert(`You have successfully signed up!`);
       document.location.replace("/");
     } else {
       alert(
