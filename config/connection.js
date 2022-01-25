@@ -5,7 +5,7 @@ let sequelize;
 // If hosted on Heroku with JawsDB
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
-} else {
+} else { //
   // Else configure for local computer
   sequelize = new Sequelize(
     process.env.DB_NAME,
