@@ -6,9 +6,7 @@ const { Post, User, Comment, Vote} = require("../models");
 router.get("/js", (req, res) => {
 
 try {
-    res.render("jsquiz", {
-    // loggedIn: req.session.loggedIn,
-});
+    res.render("jsquiz");
 } catch (error) {
     console.log(error);
     res.status(500).json(err);
