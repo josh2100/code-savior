@@ -1,5 +1,7 @@
 let currentQuestion = 0;
 let questionArray = [];
+let score = 0;
+let totalQuestions;
 
 const fetchQuiz = async () => {
   const response = await fetch("/api/js", {
@@ -23,14 +25,15 @@ const fetchQuiz = async () => {
       }
     );
 
+    // Set total questions number
+    totalQuestions = questionArray.length;
   } else {
     response.statusText;
   }
 };
 
-// Wait for document to render
+// Wait for document to render, then fetch quiz questions
 window.addEventListener("DOMContentLoaded", async (event) => {
-  // Fetch questions
   fetchQuiz();
 
   $("#start-btn").on("click", function () {
@@ -38,32 +41,14 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   });
 });
 
-/// endGame fires checkHighScore
-function checkHighScore(score) {
-  const highScores = 1; // Placeholder
-  const lowestScore = 1; // placeholder
-
-  if (score > lowestScore) {
-    saveHighScore(score, highScores);
-    showHighScores();
-  }
-}
-
-function saveHighScore(score, highScores) {
-  /// Change to Modal
-  const accuracyModal = alert("Your accuracy was:");
+const endGame = () => {
+  const accuracyModal = alert(`Your accuracy was: ${score}/${totalQuestions}`);
   restartGame();
-};
-
-let showHighScores = function () {};
-
-const endGame = function () {
-  checkHighScore(timeLeft);
 };
 
 const buildQuestionTemplate = () => {
   // Check if there are any more questions
-  const checkIfGameEnd = function () {
+  const checkIfGameEnd = () => {
     if (currentQuestion >= questionArray.length) {
       endGame();
     } else {
@@ -74,11 +59,11 @@ const buildQuestionTemplate = () => {
   // Check accuracy functions
   const correct = () => {
     currentQuestion += 1;
+    score ++;
     checkIfGameEnd();
   };
   const incorrect = () => {
     currentQuestion += 1;
-    timeLeft -= 10;
     checkIfGameEnd();
   };
 
@@ -103,7 +88,7 @@ const buildQuestionTemplate = () => {
   $("#answer4").text(questionArray[currentQuestion].answer4);
 
   // Check accuracy
-  $("#answer1").on("mousedown", function () {
+  $("#answer1").on("mousedown", () => {
     if (questionArray[currentQuestion].correctAnswer == "answer1") {
       correct();
     } else {
@@ -111,7 +96,7 @@ const buildQuestionTemplate = () => {
     }
   });
 
-  $("#answer2").on("mousedown", function () {
+  $("#answer2").on("mousedown", () => {
     if (questionArray[currentQuestion].correctAnswer == "answer2") {
       correct();
     } else {
@@ -119,7 +104,7 @@ const buildQuestionTemplate = () => {
     }
   });
 
-  $("#answer3").on("mousedown", function () {
+  $("#answer3").on("mousedown", () => {
     if (questionArray[currentQuestion].correctAnswer == "answer3") {
       correct();
     } else {
@@ -127,7 +112,7 @@ const buildQuestionTemplate = () => {
     }
   });
 
-  $("#answer4").on("mousedown", function () {
+  $("#answer4").on("mousedown", () => {
     if (questionArray[currentQuestion].correctAnswer == "answer4") {
       correct();
     } else {
@@ -136,18 +121,14 @@ const buildQuestionTemplate = () => {
   });
 };
 
-let startGame = function () {
+let startGame = () => {
   // Clear screen
   $("main").html("");
-
-  // Reset variables
-  timeLeft = 300;
-  currentQuestion = 0;
 
   // Build question template
   buildQuestionTemplate();
 };
 
-let restartGame = function () {
+let restartGame = () => {
   document.location.reload();
 };
