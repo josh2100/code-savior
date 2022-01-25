@@ -51,6 +51,7 @@ async function signup(event) {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
+      alert(`You have successfully signed up!`);
       document.location.replace("/");
     } else {
       alert(

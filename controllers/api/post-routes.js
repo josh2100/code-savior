@@ -120,7 +120,7 @@ router.post("/", async (req, res) => {
 });
 
 // Upvote a post
-router.put("/upvote", withAuth, (req, res) => {
+router.put("/upvote", (req, res) => {
   // Check that session exists
   if (req.session) {
     // Pass session id along with all destructured properties on req.body
