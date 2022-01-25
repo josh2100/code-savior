@@ -8,10 +8,10 @@ async function logout(event) {
 
   if (response.ok) {
     document.location.replace("/");
-    alert("logged out bossman");
+    alert("You have successfully logged out!");
   } else {
     alert(response.statusText);
-    console.log("looker");
+    console.log("Something has gone wrong sir.");
   }
 }
 
