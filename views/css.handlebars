@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="/styles/style.css">
+<div class="js-handle-title">
+  <h2>CSS Resources</h2>
+  {{!-- <a href="/quiz/js">Click this link to test your knowledge :)</a> --}}
+  <ol class="post-list">
+    {{#each posts as |post|}}
+    <li>
+</div>
+
+<article class="post">
+  <div class="title">
+    <a href="/post/{{id}}">{{title}}</a>
+    <a href="{{post_url}}" target="_blank"><span>({{format_url post_url}})</span></a>
+  </div>
+  <div class="meta">
+    {{vote_count}} {{format_plural "vote" vote_count}} for {{user.username}}'s post.
+    {{!-- | --}}
+    {{!-- <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a> --}}
+  </div>
+</article>
+
+</li>
+{{/each}}
+</ol>

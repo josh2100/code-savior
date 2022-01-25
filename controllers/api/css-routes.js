@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Create new question (api/html)
+// Create new question (api/css)
 router.post("/", async (req, res) => {
   try {
     const newQuestion = await Question.create({
@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Delete a question (api/html)
+// Delete a question (api/css)
 router.delete("/:id", async (req, res) => {
   try {
     const deleteQuestion = await Question.destroy({
