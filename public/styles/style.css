@@ -3,6 +3,7 @@
   --primary-color: #e8d3a3;
   --secondary-color: #ffa633;
   --trimester-color: #3b5a9d;
+  --bg-color: #ffdae0;
   --fourth-color: #4fb2aa;
 }
 
@@ -79,19 +80,6 @@ a, a:hover, a::before, a::after {
   color: var(--trimester-color);
 }
 
-/* js.handlebars Styling */
-.js-handle-title {
-  text-align: center;
-  font-size: 26px;
-}
-
-.post {
-  margin: 25px 25px;
-  padding: 10px;
-  font-size: 25px;
-  text-align: center;
-}
-
 /* js-main.handlebars Styling */
 .js-main-title h1 {
   color: var(--trimester-color);
@@ -116,7 +104,7 @@ a, a:hover, a::before, a::after {
 
 /* "View Resources Link */
 .resources-column {
-  background-color: var(--primary-color);
+  
   height: 100%;
 }
 
@@ -131,7 +119,7 @@ a, a:hover, a::before, a::after {
 
 /* "Take A Quiz" Link */
 .quiz-column {
-  background-color: var(--secondary-color);
+  background-color: var(--bg-color);
   height: 100px;
 }
 
@@ -143,6 +131,29 @@ a, a:hover, a::before, a::after {
   opacity: 0.75;
   text-decoration: underline;
 }
+
+/* js.handlebars Styling */
+.js-handle-title {
+  text-align: center;
+  font-size: 30px;
+  color: var(--trimester-color);
+  text-decoration: underline;
+}
+
+.post {
+  margin: 25px 25px;
+  padding: 10px;
+  font-size: 25px;
+  text-align: center;
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+}
+
+.post:hover {
+  text-decoration: underline;
+  opacity: 0.75;
+}
+
 
 /* Footer */
 .footer {
