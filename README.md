@@ -15,13 +15,13 @@ Code Savior is a web application for sharing study resources and practicing codi
 
 ## Installation
 
-Install MySQL on your machine. Use "npm install" to install required modules for this application. Create your own .env file add add your MySQL credentials. 
+Install MySQL on your machine. Use "npm install" to install required modules for this application. Create your own .env file add add your MySQL credentials. To seed data, run "node seeds/index.js".
 
 ## Usage
 
 Click login, and create a new user. Select HTML, CSS, or JavaScript to see each topic's main page. Select View Resources or Take A Quiz. 
 
-Click "Profile" to create a new post. Enter a title,enter "js", "css", or "html" for the topic, enter a link, and some text explaining the resource. 
+Click "Profile" to create a new post. Enter a title, enter "js", "css", or "html" for the topic, enter a link, and some text explaining the resource. 
 
 ## License
 
