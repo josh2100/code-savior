@@ -137,13 +137,13 @@ const questionData = [
       correctAnswer: "answer4",
     },
     {
-      topic: "css",
+      topic: "html",
       title: "Which of the following is a correct self-closing tag?",
       answer1: "<p />",
       answer2: "<div />",
       answer3: "<br />",
       answer4: "<section />",
-      correctAnswer: "",
+      correctAnswer: "answer3",
     },
 ];
   
