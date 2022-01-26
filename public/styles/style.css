@@ -77,6 +77,7 @@ a, a:hover, a::before, a::after {
   text-align: center;
 }
 
+
 .concept-content {
   box-shadow: -8px 0px 8px #000000;
   background-color: var(--bg-color);
@@ -313,6 +314,32 @@ a, a:hover, a::before, a::after {
   font-size: 26px;
   color: var(--trimester-color);
   text-decoration: underline;
+}
+
+/* Profile and Login Page Styles */
+input {
+  padding: .5%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+textarea:focus, input:focus {
+  outline: none;
+  border: 1px solid #3486EB;
+}
+
+button {
+  background-color: var(--fourth-color);
+  border: 0;
+  padding: 1%;
+  color: var(--trimester-color);
+  font-weight: bold;
+  transition: background-color .1s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #3486EB;
 }
 
 /* Footer */
