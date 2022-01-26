@@ -5,10 +5,10 @@ async function addResource(event) {
   const topic = document.querySelector('input[name="topic"]').value.trim();
   const post_url = document.querySelector('input[name="post_url"]').value.trim();
   const text = document.querySelector('textarea[name="text"]').value.trim();
-  const user_id = document.querySelector('input[name="user_id"]').value.trim();
-  console.log('line 8', title, topic, text, user_id);
+  // const user_id = document.querySelector('input[name="user_id"]').value.trim();
+  console.log('line 8', title, topic, text);
 
-  if (title && topic && text && post_url && user_id) {
+  if (title && topic && text && post_url) {
   const response = await fetch("/api/posts", {
     method: "Post",
     body: JSON.stringify({
@@ -16,7 +16,6 @@ async function addResource(event) {
       topic,
       post_url,
       text,
-      user_id,
     }),
     headers: { "Content-Type": "application/json" },
   });
