@@ -19,6 +19,18 @@ a, a:hover, a::before, a::after {
   list-style: none;
 }
 
+/* Homepage Message Styling */
+.homepage-message {
+  padding: 12px;
+  height: 100%;
+  width: 25%;
+  margin: 10px auto;
+  font-size: 28px;
+  color: var(--trimester-color);
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+}
+
 /* Header/Nav-bar */
 .welcome-banner {
   font-size: 30px;
@@ -57,7 +69,138 @@ a, a:hover, a::before, a::after {
   border: none;
 }
 
-/* About Us */
+/* About Section */
+.concept-content-wrapper {
+  width: 100%;
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.concept-content {
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  padding: 5px;
+}
+
+.concept-content h2 {
+  color: var(--trimester-color);
+  font-size: 26px;
+}
+
+.concept-content p {
+  color: var(--trimester-color);
+  font-size: 20px;
+  padding: 5px;
+}
+
+.user-story-wrapper {
+  list-style: none;
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+}
+
+.user-story {
+  margin: 0 auto;
+  display: table;
+  width: 100%;
+}
+
+.user-story ol {
+  color: var(--trimester-color);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.user-story li {
+  font-size: 20px;
+  color: var(--trimester-color);
+}
+
+.founders-story-wrapper {
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+}
+
+.founders-story {
+  font-size: 20px;
+  text-align: center;
+  color: var(--trimester-color);
+  padding: 2px;
+}
+
+.founders-story h2 {
+  font-size: 26px;
+  color: var(--trimester-color);
+  padding: 2px;
+  font-weight: 600;
+}
+
+/* Future Developments Styling */
+.future-content-wrapper {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  color: var(--trimester-color);
+}
+
+.future-content h2 {
+  font-size: 26px;
+  padding: 2px;
+}
+
+.future-content ol {
+  font-size: 22px;
+  padding: 5px;
+}
+
+.future-content li {
+  font-size: 20px;
+  padding: 2px 8px;
+}
+
+.future-content li:last-child {
+  padding: 5px;
+}
+
+/* Contact Section */
+.contact-wrapper {
+  display: table;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.secondary-content {
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  text-align: center;
+  padding: 5px;
+  display: table;
+  margin: 0 auto;
+}
+
+.secondary-content h2 {
+  color: var(--trimester-color);
+  font-size: 24px;
+}
+
+.secondary-content h4 {
+  color: var(--fourth-color);
+  font-size: 22px;
+  padding: 5px;
+}
+
+.secondary-content p {
+  color: var(--trimester-color);
+  font-size: 20px;
+  padding: 5px;
+}
 
 /* Hero Section */
 .topic-text {
@@ -74,14 +217,15 @@ a, a:hover, a::before, a::after {
 .content-options {
   padding: 10px 5px;
   margin: 15px;
-  font-size: 50px;
   text-align: center;
+  font-size: 25px;
 }
 
 .content-options a {
   margin: 5px;
-  font-size: 80px;
+  font-size: 60px;
   color: var(--trimester-color);
+  text-align: center;
 }
 
 /* js-main.handlebars Styling */
@@ -106,7 +250,7 @@ a, a:hover, a::before, a::after {
   flex: 1;
 }
 
-/* "View Resources Link */
+/* JavaScript "View Resources" Link */
 .resources-column {
   background-color: var(--primary-color);
   height: 100%;
@@ -121,7 +265,7 @@ a, a:hover, a::before, a::after {
   text-decoration: underline;
 }
 
-/* "Take A Quiz" Link */
+/* JavaScript "Take A Quiz" Link */
 .quiz-column {
   background-color: var(--bg-color);
   height: 100px;
@@ -170,6 +314,32 @@ a, a:hover, a::before, a::after {
   font-size: 26px;
   color: var(--trimester-color);
   text-decoration: underline;
+}
+
+/* Profile and Login Page Styles */
+input {
+  padding: .5%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+textarea:focus, input:focus {
+  outline: none;
+  border: 1px solid #3486EB;
+}
+
+button {
+  background-color: var(--fourth-color);
+  border: 0;
+  padding: 1%;
+  color: var(--trimester-color);
+  font-weight: bold;
+  transition: background-color .1s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #3486EB;
 }
 
 /* Footer */
