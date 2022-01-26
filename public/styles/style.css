@@ -70,6 +70,37 @@ a, a:hover, a::before, a::after {
 }
 
 /* About Us */
+.contact-wrapper {
+  display: table;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.secondary-content {
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  text-align: center;
+  padding: 5px;
+  display: table;
+  margin: 0 auto;
+}
+
+.secondary-content h2 {
+  color: var(--trimester-color);
+  font-size: 24px;
+}
+
+.secondary-content h4 {
+  color: var(--fourth-color);
+  font-size: 22px;
+  padding: 5px;
+}
+
+.secondary-content p {
+  color: var(--trimester-color);
+  font-size: 20px;
+  padding: 5px;
+}
 
 /* Hero Section */
 .topic-text {
@@ -119,7 +150,7 @@ a, a:hover, a::before, a::after {
   flex: 1;
 }
 
-/* "View Resources Link */
+/* JavaScript "View Resources" Link */
 .resources-column {
   background-color: var(--primary-color);
   height: 100%;
@@ -134,7 +165,7 @@ a, a:hover, a::before, a::after {
   text-decoration: underline;
 }
 
-/* "Take A Quiz" Link */
+/* JavaScript "Take A Quiz" Link */
 .quiz-column {
   background-color: var(--bg-color);
   height: 100px;
