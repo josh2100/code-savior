@@ -21,14 +21,15 @@ a, a:hover, a::before, a::after {
 
 /* Homepage Message Styling */
 .homepage-message {
-  padding: 5px;
-  margin: 10px 5px;
-  font-size: 20.5px;
+  padding: 12px;
+  height: 100%;
+  width: 25%;
+  margin: 10px auto;
+  font-size: 28px;
   color: var(--trimester-color);
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
 }
-
-
-
 
 /* Header/Nav-bar */
 .welcome-banner {
@@ -85,14 +86,15 @@ a, a:hover, a::before, a::after {
 .content-options {
   padding: 10px 5px;
   margin: 15px;
-  font-size: 50px;
   text-align: center;
+  font-size: 25px;
 }
 
 .content-options a {
   margin: 5px;
-  font-size: 80px;
+  font-size: 60px;
   color: var(--trimester-color);
+  text-align: center;
 }
 
 /* js-main.handlebars Styling */
