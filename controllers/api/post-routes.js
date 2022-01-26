@@ -110,7 +110,7 @@ router.post("/", async (req, res) => {
       topic: req.body.topic,
       post_url: req.body.post_url,
       text: req.body.text,
-      user_id: req.body.user_id,
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(response);

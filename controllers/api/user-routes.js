@@ -63,6 +63,8 @@ router.post("/", async (req, res) => {
       password: req.body.password,
     });
 
+    console.log('response', response);
+
     req.session.save(() => {
       // declare session variables
       req.session.user_id = response.id;
@@ -71,10 +73,8 @@ router.post("/", async (req, res) => {
 
       res
         .status(200)
-        .json({ user: response, message: "You have successfully signed up!" });
+        .json(response);
     });
-
-    res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
