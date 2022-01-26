@@ -19,6 +19,17 @@ a, a:hover, a::before, a::after {
   list-style: none;
 }
 
+/* Homepage Message Styling */
+.homepage-message {
+  padding: 5px;
+  margin: 10px 5px;
+  font-size: 20.5px;
+  color: var(--trimester-color);
+}
+
+
+
+
 /* Header/Nav-bar */
 .welcome-banner {
   font-size: 30px;
