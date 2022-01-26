@@ -139,6 +139,35 @@ a, a:hover, a::before, a::after {
   font-weight: 600;
 }
 
+/* Future Developments Styling */
+.future-content-wrapper {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  color: var(--trimester-color);
+}
+
+.future-content h2 {
+  font-size: 26px;
+  padding: 2px;
+}
+
+.future-content ol {
+  font-size: 22px;
+  padding: 5px;
+}
+
+.future-content li {
+  font-size: 20px;
+  padding: 2px 8px;
+}
+
+.future-content li:last-child {
+  padding: 5px;
+}
+
 /* Contact Section */
 .contact-wrapper {
   display: table;
