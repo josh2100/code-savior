@@ -22,16 +22,10 @@ async function addResource(event) {
   });
 
   if (response.ok) {
-    document.location.reload('/profile');
+    document.location.reload();
   } else {
-    response.statusText;
+    alert('failed to add resource', response.statusText);
   }
-
-if (response.ok) {
-    document.location.replace('/profile')
-} else {
-    alert(response.statusText);
-}
 }
 }
 

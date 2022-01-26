@@ -74,4 +74,16 @@ router.get('/post/:id', (req, res) => {
   })
   });
 
+  router.get('/about', (req, res) => {
+    res.render("about");
+  });
+
+  router.get('/future', (req, res) => {
+    res.render("future");
+  })
+
+  router.get('/contact', (req, res) => {
+    res.render("contact");
+  })
+
 module.exports = router;

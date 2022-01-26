@@ -27,6 +27,10 @@ a, a:hover, a::before, a::after {
   text-align: center;
 }
 
+.welcome-banner a {
+  color: var(--trimester-color);
+}
+
 .nav-bar {
   background-color: var(--fourth-color);
   color: var(--trimester-color);
