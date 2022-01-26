@@ -182,3 +182,11 @@ a, a:hover, a::before, a::after {
   background-color: var(--fourth-color);
   color: var(--trimester-color);
 }
+
+.external-link {
+  color: var(--fourth-color);
+}
+
+.internal-link {
+  color: var(--trimester-color);
+}
