@@ -44,7 +44,7 @@ router.get("/", (req, res) => {
       ],
     })
       .then((dbPostData) => {
-        const posts = dbPostData.map((post) => post.get({ plain: true }));
+        const posts = dbPostData.map((post) => post.get({ plain: true })).sort((a,b) => b.vote_count - a.vote_count);
   
         res.render("css", {
           posts,

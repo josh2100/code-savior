@@ -20,7 +20,7 @@ async function upvoteClickHandler(event) {
     alert(`Post liked!`);
     document.location.reload();
   } else {
-    alert(response.statusText);
+    alert('You already liked this!', response.statusText);
   }
 }
 
