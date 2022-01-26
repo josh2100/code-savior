@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
           "vote_count",
         ],
       ],
-      order: [["created_at", "DESC"]],
+      order: [["id", "ASC"]],
       include: [
         {
           model: Comment,
@@ -44,9 +44,8 @@ router.get("/", (req, res) => {
       ],
     })
       .then((dbPostData) => {
-        const posts = dbPostData.map((post) => post.get({ plain: true }));
-        console.log('line 47', posts);
-  
+        const posts = dbPostData.map((post) => post.get({ plain: true })).sort((a,b) => b.vote_count - a.vote_count);
+        console.log('line 49- posts: ' , posts);
         res.render("js", {
           posts,
           loggedIn: req.session.loggedIn,

@@ -352,3 +352,11 @@ button:hover {
   background-color: var(--fourth-color);
   color: var(--trimester-color);
 }
+
+.external-link {
+  color: var(--fourth-color);
+}
+
+.internal-link {
+  color: var(--trimester-color);
+}
