@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
+const { Post, User, Comment, Vote } = require("../models");
 
 // route for main javascript page (js/main)
 router.get("/main", (req, res) => {
@@ -19,6 +19,7 @@ router.get("/", (req, res) => {
         "topic",
         "post_url",
         "text",
+        "created_at",
         [
           sequelize.literal(
             "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
@@ -26,6 +27,7 @@ router.get("/", (req, res) => {
           "vote_count",
         ],
       ],
+      order: [["created_at", "DESC"]],
       include: [
         {
           model: Comment,
@@ -43,6 +45,7 @@ router.get("/", (req, res) => {
     })
       .then((dbPostData) => {
         const posts = dbPostData.map((post) => post.get({ plain: true }));
+        console.log('line 47', posts);
   
         res.render("js", {
           posts,

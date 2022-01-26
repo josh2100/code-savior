@@ -19,6 +19,7 @@ router.get("/", (req, res) => {
         "topic",
         "post_url",
         "text",
+        "created_at",
         [
           sequelize.literal(
             "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
@@ -26,6 +27,7 @@ router.get("/", (req, res) => {
           "vote_count",
         ],
       ],
+      order: [["created_at", "DESC"]],
       include: [
         {
           model: Comment,
