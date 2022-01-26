@@ -69,7 +69,77 @@ a, a:hover, a::before, a::after {
   border: none;
 }
 
-/* About Us */
+/* About Section */
+.concept-content-wrapper {
+  width: 100%;
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.concept-content {
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  padding: 5px;
+}
+
+.concept-content h2 {
+  color: var(--trimester-color);
+  font-size: 26px;
+}
+
+.concept-content p {
+  color: var(--trimester-color);
+  font-size: 20px;
+  padding: 5px;
+}
+
+.user-story-wrapper {
+  list-style: none;
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+}
+
+.user-story {
+  margin: 0 auto;
+  display: table;
+  width: 100%;
+}
+
+.user-story ol {
+  color: var(--trimester-color);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.user-story li {
+  font-size: 20px;
+  color: var(--trimester-color);
+}
+
+.founders-story-wrapper {
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+}
+
+.founders-story {
+  font-size: 20px;
+  text-align: center;
+  color: var(--trimester-color);
+  padding: 2px;
+}
+
+.founders-story h2 {
+  font-size: 26px;
+  color: var(--trimester-color);
+  padding: 2px;
+  font-weight: 600;
+}
+
+/* Contact Section */
 .contact-wrapper {
   display: table;
   margin: 0 auto;
