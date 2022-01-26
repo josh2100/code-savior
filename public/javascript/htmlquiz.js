@@ -4,7 +4,7 @@ let score = 0;
 let totalQuestions;
 
 const fetchQuiz = async () => {
-  const response = await fetch("/api/js", {
+  const response = await fetch("/api/html", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
