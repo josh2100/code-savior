@@ -38,12 +38,6 @@ router.get("/:id", async (req, res) => {
               attributes: ["title"],
             },
         },
-        // {
-        //   model: Post,
-        //   attributes: ["title"],
-        //   through: Vote,
-        //   attributes: ["voted_posts"],
-        // },
       ],
     });
 
@@ -63,6 +57,8 @@ router.post("/", async (req, res) => {
       password: req.body.password,
     });
 
+    console.log('response', response);
+
     req.session.save(() => {
       // declare session variables
       req.session.user_id = response.id;
@@ -71,34 +67,12 @@ router.post("/", async (req, res) => {
 
       res
         .status(200)
-        .json({ user: response, message: "You have successfully signed up!" });
+        .json(response);
     });
-
-    res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-// Create a User route
-// router.post("/", (req, res) => {
-//   User.create({
-//     username: req.body.username,
-//     email: req.body.email,
-//     password: req.body.password,
-//   })
-//   .then(dbUserData => {
-//     req.session.save(() => {
-//       req.session.user_id = dbUserData.id;
-//       req.session.username = dbUserData.username;
-//       req.session.loggedIn = true;
-//     });
-//     res.status(200).json(dbUserData);
-//   })
-//   .catch(err => {
-//     res.status(500).json(err);
-//   })
-// })
 
 // Update a User route
 router.put("/:id", withAuth, async (req, res) => {
