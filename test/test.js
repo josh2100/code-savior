@@ -1,15 +1,5 @@
-const {format_plural, format_date} = require("../utils/helpers");
-
-// Testing that the testing works
-var assert = require("assert");
-
-describe("Array", function () {
-  describe("#indexOf()", function () {
-    it("should return -1 when the value is not present", function () {
-      assert.equal([1, 2, 3].indexOf(4), -1);
-    });
-  });
-});
+const { format_plural, format_date, format_url } = require("../utils/helpers");
+const assert = require("assert");
 
 // Helpers
 describe("format_plural() returns pluralized", () => {
@@ -30,5 +20,15 @@ describe("format_date returns date in MM/DD/YYYY format", () => {
       assert(formattedDate === "3/20/2020");
     });
   });
+
+describe("format_url simplifies url for user experience", () => {
+    it("should get rid of http://", () => {
+      const url = format_url("http://www.google.com/")
+  
+      assert(url === "google.com");
+    });
+  });
+
+
 
 

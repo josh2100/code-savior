@@ -59,7 +59,7 @@ const buildQuestionTemplate = () => {
   // Check accuracy functions
   const correct = () => {
     currentQuestion += 1;
-    score ++;
+    score++;
     checkIfGameEnd();
   };
   const incorrect = () => {
@@ -132,3 +132,5 @@ let startGame = () => {
 let restartGame = () => {
   document.location.reload();
 };
+
+module.exports = { fetchQuiz };
