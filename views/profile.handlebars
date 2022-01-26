@@ -15,7 +15,7 @@
       <input type="text" id="post_url" name="post_url" />
     </div>
     <div>
-      <label for="text">Blog Text</label>
+      <label for="text">Text</label>
 <textarea id="text" name="text" rows="4" cols="50"></textarea>
     </div>
     <button type="submit" class="btn">Create</button>
@@ -32,7 +32,7 @@
   <li>
     Resource Topic: {{topic}}
     |
-     <a href= "/profile/edit/{{post.id}}" class= "edit-link">Edit post</a>
+     <a href= "/profile/edit/{{post.id}}" class= "internal-link">Edit post</a>
     {{> post-info post}}
   </li>
    {{/each}}
