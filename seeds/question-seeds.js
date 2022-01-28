@@ -17,7 +17,7 @@ const questionData = [
     answer2: "&&",
     answer3: "||",
     answer4: "==",
-    correctAnswer: "answer3",
+    correctAnswer: "answer1",
   },
   {
     topic: "js",
