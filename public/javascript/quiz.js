@@ -2,6 +2,8 @@ let currentQuestion = 0;
 let questionArray = [];
 let score = 0;
 let totalQuestions;
+let accuracyIndicator;
+let destroyIndicator = () => {setTimeout(() => $("#accuracy-indicator").text(" "), 2000);}
 
 const fetchQuiz = async () => {
   const response = await fetch("/api/js", {
@@ -34,6 +36,8 @@ const fetchQuiz = async () => {
 
 // Wait for document to render, then fetch quiz questions
 window.addEventListener("DOMContentLoaded", async (event) => {
+  accuracyIndicator = document.querySelector("#accuracy-indicator");
+
   fetchQuiz();
 
   $("#start-btn").on("click", function () {
@@ -59,25 +63,29 @@ const buildQuestionTemplate = () => {
   // Check accuracy functions
   const correct = () => {
     currentQuestion += 1;
+    $("#accuracy-indicator").text("Correct!");
+    destroyIndicator();
     score++;
     checkIfGameEnd();
   };
   const incorrect = () => {
+    $("#accuracy-indicator").text("Incorrect!");
+    destroyIndicator();
     currentQuestion += 1;
     checkIfGameEnd();
   };
 
   // Clear screen
-  $("main").html("");
+  $("#quiz-body").html("");
 
   // Add question
-  $("main").append("<br><br><p id='title' class=''></p><br><br>");
+  $("#quiz-body").append("<div class='post-text'><br><br><p id='title' class=''></p><br><br></div>");
 
   /// Add answer buttons
-  $("main").append("<button id='answer1' class=''>ANSWER1</button>");
-  $("main").append("<button id='answer2' class=''>ANSWER2</button>");
-  $("main").append("<button id='answer3' class=''>ANSWER3</button>");
-  $("main").append("<button id='answer4' class=''>ANSWER4</button>");
+  $("#quiz-body").append("<div class='post-text'><button id='answer1' class=''>ANSWER1</button></div>");
+  $("#quiz-body").append("<div class='post-text'><button id='answer2' class=''>ANSWER2</button></div>");
+  $("#quiz-body").append("<div class='post-text'><button id='answer3' class=''>ANSWER3</button></div>");
+  $("#quiz-body").append("<div class='post-text'><button id='answer4' class=''>ANSWER4</button></div>");
 
   // Fill in question title
   $("#title").text(questionArray[currentQuestion].title);
@@ -123,7 +131,7 @@ const buildQuestionTemplate = () => {
 
 let startGame = () => {
   // Clear screen
-  $("main").html("");
+  $("#quiz-body").html("");
 
   // Build question template
   buildQuestionTemplate();
@@ -132,4 +140,3 @@ let startGame = () => {
 let restartGame = () => {
   document.location.reload();
 };
-
