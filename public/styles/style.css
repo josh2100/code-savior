@@ -239,54 +239,9 @@ a::after {
 }
 
 .universe-columns {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  align-items: center;
   width: 100%;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
-}
-
-/* JavaScript "View Resources" Link */
-.resources-column {
-  background-color: var(--primary-color);
-  height: 100%;
-}
-
-.resources-column a {
-  color: var(--secondary-color);
-  font-weight: bold;
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-}
-
-.resources-column:hover {
-  opacity: 0.75;
-  text-decoration: underline;
-}
-
-/* JavaScript "Take A Quiz" Link */
-.quiz-column {
-  background-color: var(--bg-color);
-  height: 100px;
-}
-
-.quiz-column a {
-  color: var(--trimester-color);
-  font-weight: bold;
-  display: inline-block;
-  text-decoration: none;
-}
-
-.quiz-column:hover {
-  opacity: 0.75;
-  text-decoration: underline;
+  text-align:center;
 }
 
 /* js.handlebars Styling */
@@ -369,10 +324,12 @@ button:hover {
 }
 
 .external-link {
-  color: var(--fourth-color);
+  background-color: var(--primary-color);
+  color: var(--trimester-color);
 }
 
 .internal-link {
+  background-color: var(--primary-color);
   color: var(--trimester-color);
 }
 
@@ -402,4 +359,12 @@ button:hover {
 
 .signup-form {
   text-align: center;
+}
+
+.post-int-link {
+  color: var(--trimester-color);
+}
+
+.post-ext-link {
+  color: var(--fourth-color);
 }
