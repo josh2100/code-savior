@@ -17,7 +17,7 @@ const questionData = [
     answer2: "&&",
     answer3: "||",
     answer4: "==",
-    correctAnswer: "answer3",
+    correctAnswer: "answer1",
   },
   {
     topic: "js",
@@ -215,12 +215,12 @@ const questionData = [
   },
   {
     topic: "html",
-    title: "Which of the following would be the largest heading?",
-    answer1: "<h1>",
-    answer2: "<h2>",
-    answer3: "<h3>",
-    answer4: "<h4>",
-    correctAnswer: "answer1",
+    title: "What does the DOM stand for?",
+    answer1: "Document Oriented Model",
+    answer2: "Document Object Model",
+    answer3: "Direct Object Model",
+    answer4: "Dedicated Object Model",
+    correctAnswer: "answer2",
   },
   {
     topic: "html",
