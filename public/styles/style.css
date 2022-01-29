@@ -338,6 +338,11 @@ button:hover {
 
 .post-text {
   text-align: center;
+  background-color: none;
+}
+
+.post-text-single-handlebar {
+  text-align: center;
 }
 
 .comment-form {
@@ -382,4 +387,9 @@ button:hover {
 
 .edit-post-form {
   text-align: center;
+}
+
+#accuracy-indicator{
+  color: var(--primary-color);
+  font-weight: bold;
 }

@@ -3,7 +3,7 @@ let questionArray = [];
 let score = 0;
 let totalQuestions;
 let accuracyIndicator;
-let destroyIndicator = () => {setTimeout(() => $("#accuracy-indicator").text(" "), 2000);}
+let destroyIndicator = () => {setTimeout(() => $("#accuracy-indicator").text(" "), 1000);}
 
 const fetchQuiz = async () => {
   const response = await fetch("/api/css", {
