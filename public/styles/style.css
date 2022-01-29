@@ -262,7 +262,6 @@ a::after {
 }
 
 .post:hover {
-  text-decoration: underline;
   opacity: 0.75;
 }
 
@@ -300,7 +299,7 @@ input:focus {
 button {
   background-color: var(--fourth-color);
   border: 0;
-  padding: 1%;
+  padding: 5px;
   color: var(--trimester-color);
   font-weight: bold;
   transition: background-color 0.1s;
@@ -339,10 +338,20 @@ button:hover {
 
 .post-text {
   text-align: center;
+  background-color: none;
+}
+
+.post-text-single-handlebar {
+  text-align: center;
 }
 
 .comment-form {
   text-align: center;
+}
+
+.comment-text {
+  width: 330px;
+  height: 100px;
 }
 
 .new-post-form {
@@ -363,8 +372,24 @@ button:hover {
 
 .post-int-link {
   color: var(--trimester-color);
+  text-decoration: underline;
 }
 
 .post-ext-link {
   color: var(--fourth-color);
+  text-decoration: underline;
+}
+
+.post-ext-link:hover {
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+.edit-post-form {
+  text-align: center;
+}
+
+#accuracy-indicator{
+  color: var(--primary-color);
+  font-weight: bold;
 }
