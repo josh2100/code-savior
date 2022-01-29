@@ -1,9 +1,10 @@
-<article>
-  <a href="/profile"> &larr; Back to profile</a>
+
+  <form class="edit-post-form">
+    <article>
+  <a href="/profile"> Back to profile</a>
   <h2>
     Edit Post
   </h2>
-  <form class="edit-post-form">
     <div>
       <input name="post-title" type="text" value="{{post.title}}" />
       <span>({{format_url post.post_url}})</span>
@@ -15,13 +16,14 @@
     </div>
     <button type="submit">Save post</button>
     <button type="button" class="delete-post-btn">Delete post</button>
+    </article>
   </form>
-</article>
+
 
 
 <form class="comment-form">
   <div>
-    <textarea name="comment-body"></textarea>
+    <textarea name="comment-body" class="comment-text"></textarea>
   </div>
 
   <div>
@@ -30,10 +32,10 @@
 </form>
 
 <div class="comments">
-  {{#each this}}
+  {{#each post.comments}}
   <section class="comment">
     <div class="meta">
-      {{user.username}} on {{created_at}}
+      {{user.username}} on {{format_date created_at}}
     </div>
     <div class="text">
       {{comment_text}}

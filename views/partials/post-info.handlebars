@@ -1,7 +1,7 @@
 <article class="post">
   <div class="title">
-    <a class="internal-link" href="/post/{{id}}">{{title}}</a>
-   <a href="{{post_url}}" target="_blank"><span class= "external-link">({{format_url post_url}})</span></a>
+    <a class="post-int-link" href="/post/{{id}}">{{title}}</a>
+   <a href="{{post_url}}" target="_blank"><span class= "post-ext-link">({{format_url post_url}})</span></a>
   </div>
   <div class="meta">
     {{vote_count}} {{format_plural "like" vote_count}} for {{user.username}}'s resource 
