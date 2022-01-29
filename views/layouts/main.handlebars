@@ -2,43 +2,55 @@
 <html lang="en">
 
 <head>
-    <meta charset=“UTF-8">
-    <meta name=“viewport” content=“width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Savior</title>
-    <link rel=“stylesheet” href=“/stylesheets/style.css”>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class=“wrapper”>
-        <header>
-            <h1>
-                <a href=“/”>Code Savior</a>
-            </h1>
-            <nav>
-                {{#if loggedIn}}
-                <a href=“/dashboard”>dashboard</a>
-                <button id=“logout” class=“btn-no-style”>logout</button>
-                {{else}}
-                <a href=“/login”>login</a>
-                {{/if}}
-            </nav>
-        </header>
 
-        <div class="dropdown">
-            <p>Choose Your Topic</p>
-            <div class="dropdown-content">
-                <a href="/html">HTML</a>
-                <a href="/css">CSS</a>
-                <a href="/js">JavaScript</a>
-            </div>
+    <!-- Welcome Banner/Message-->
+    <section class="welcome-banner">
+        <div class="logo-wrapper">
+            <h1><a href="/">Code Savior</a> </h1>
         </div>
-    </div>
-    </div>
     </section>
 
-    <main>
-        {{{ body }}}
-    </main>
+    <!-- Header/Nav-Bar -->
+    <header class="header">
+        <nav>
+            <ul class="nav-bar">
+                {{!-- {{#if loggedIn}} --}}
+                <li><a href="/profile">Profile</a></li>
+                <button id="logout" class="btn-no-style">Logout</button></li>
+                {{!-- {{else}} --}}
+                </li><a href="/login">Login</a></li>
+                {{!-- {{/if}} --}}
+                <li><a href="/about">About</a></li>
+                <li><a href="/future">Future Developments</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    </section>
+
+    <!-- Hero Section/Pick Your Topic Section -->
+    <section class="hero">
+        <div class="content-options">
+            <a href="/html/main">HTML &#x1f366; </a>
+            <a href="/css/main">CSS &#x1f366; </a>
+            <a href="/js/main">JavaScript &#x1f366; </a>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <div>
+        <main>
+            {{{ body }}}
+        </main>
     </div>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>

@@ -16,13 +16,12 @@ class Post extends Model {
           "id",
           "post_url",
           "title",
-          "created_at",
-          // [
-          //   sequelize.literal(
-          //     "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
-          //   ),
-          //   "vote_count",
-          // ],
+          [
+            sequelize.literal(
+              "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+            ),
+            "vote_count",
+          ],
         ],
       });
     });
@@ -46,8 +45,15 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [3]
+        len: [1]
       }
+    },
+    post_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isURL: true,
+      },
     },
     text: {
       type: DataTypes.TEXT,
@@ -63,7 +69,6 @@ Post.init(
   },
   {
     sequelize,
-    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "post",

@@ -1,0 +1,43 @@
+<section>
+  
+
+  <form class="new-post-form">
+    <h2>Create New Post</h2>
+    <div>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" />
+    </div>
+    <div>
+      <label for="topic">Topic</label>
+      <input type="text" id="topic" name="topic" />
+    </div>
+    <div>
+      <label for="post_url">Link</label>
+      <input type="text" id="post_url" name="post_url" />
+    </div>
+    <div>
+      <label for="text">Text</label>
+<textarea id="text" name="text" rows="4" cols="50"></textarea>
+    </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</section>
+
+<script src="/javascript/add-resource.js"></script>
+
+{{#if posts.length}}
+<section>
+  <h2> Resources You Shared: </h2>
+  <ol>
+    {{#each posts as |post|}}
+  <li>
+    Resource Topic: {{topic}}
+    |
+     <a href= "/profile/edit/{{post.id}}" class= "post-int-link">Edit post</a>
+    {{> post-info post}}
+  </li>
+   {{/each}}
+  </ol>
+</section>
+{{/if}}
+

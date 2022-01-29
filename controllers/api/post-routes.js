@@ -13,16 +13,17 @@ router.get("/", async (req, res) => {
       attributes: [
         "id",
         "title",
-        "post_topic",
-        "post_text",
+        "topic",
+        "post_url",
+        "text",
         "created_at",
         [
           sequelize.literal(
-            "SELECT COUNT(*) FROM vote WHERE post_id = vote.post.id"
+            "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
           ),
+          "vote_count",
         ],
       ],
-      order: [["created_at", "DESC"]],
       include: [
         {
           model: User,
@@ -57,7 +58,20 @@ router.get("/:id", async (req, res) => {
       where: {
         id: req.params.id,
       },
-      attributes: ["id", "title", "post_topic", "post_text", "created_at"],
+      attributes: [
+        "id",
+        "title",
+        "topic",
+        "post_url",
+        "text",
+        "created_at",
+        [
+          sequelize.literal(
+            "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+          ),
+          "vote_count",
+        ],
+      ],
       include: [
         {
           model: User,
@@ -94,8 +108,9 @@ router.post("/", async (req, res) => {
     const response = await Post.create({
       title: req.body.title,
       topic: req.body.topic,
+      post_url: req.body.post_url,
       text: req.body.text,
-      user_id: req.body.user_id,
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(response);
@@ -105,7 +120,7 @@ router.post("/", async (req, res) => {
 });
 
 // Upvote a post
-router.put("/upvote", withAuth, (req, res) => {
+router.put("/upvote", (req, res) => {
   // Check that session exists
   if (req.session) {
     // Pass session id along with all destructured properties on req.body
@@ -127,8 +142,9 @@ router.put("/:id", async (req, res) => {
     const response = await Post.update(
       {
         title: req.body.title,
-        post_topic: req.body.post_topic,
-        post_text: req.body.post_text,
+        topic: req.body.topic,
+        post_url: req.body.post_url,
+        text: req.body.text,
       },
       {
         where: {

@@ -1,0 +1,45 @@
+<article class="post">
+  <div class="title">
+    {{post.title}}
+  </div>
+  <div class="meta">
+   Post by {{post.user.username}}
+    |
+   {{post.comments.length}} comments available.
+    |
+   {{post.vote_count}} votes for this resource.
+  </div>
+</article>
+
+<p class= "post-text-single-handlebar">{{post.text}}</p>
+
+{{#if loggedIn}}
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body" class="comment-text"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+    <button type="button" class="upvote-btn">upvote</button>
+  </div>
+</form>
+{{/if}}
+
+<div class="comments">
+  {{#each post.comments}}
+  <section class="comment">
+    <div class="meta">
+      {{user.username}} on {{format_date created_at}}
+    </div>
+    <div class="text">
+      {{comment_text}}
+    </div>
+  </section>
+  {{/each}}
+</div>
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+<script src="/javascript/upvote.js"></script>
+{{/if}}

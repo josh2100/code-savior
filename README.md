@@ -1,7 +1,7 @@
 # Code Savior
-Web application for sharing study resources and competing in quizzes
+Code Savior is a web application for sharing study resources and practicing coding quizzes.
 
-![Code Savior Screenshot](./images/screenshot.png)
+![Code Savior Screenshot](./public/images/screenshot.png)
 
 ## Table of Contents
 
@@ -15,11 +15,13 @@ Web application for sharing study resources and competing in quizzes
 
 ## Installation
 
-Install MySQL on your machine. Use "npm install" to install required modules for this application. Create your own .env file add add your MySQL credentials. 
+Install MySQL on your machine. Use "npm install" to install required modules for this application. Create your own .env file add add your MySQL credentials. To seed data, run "node seeds/index.js".
 
 ## Usage
 
-Usage
+Click login, and create a new user. Select HTML, CSS, or JavaScript to see each topic's main page. Select View Resources or Take A Quiz. 
+
+Click "Profile" to create a new post. Enter a title, enter "js", "css", or "html" for the topic, enter a link, and some text explaining the resource. 
 
 ## License
 
@@ -33,11 +35,11 @@ Fork the project and create a pull request. Let us know how you think you can co
 
 ## Technologies
 
-Created with Express.js, MySQL, MySQL2, Sequelize, Dotenv, Insomnia, and Node.js.
+Created with Node.js, Express.js, MySQL, MySQL2, Sequelize, SASS, Mocha, Dotenv, Insomnia, and Node.js.
 
 ## Credits
 
-Created by Joshua Schermann, Nahom Assefa, and Michael T
+Created by Joshua Schermann, Nahom Assefa, and Michael Tackett
 
 ## Questions
 

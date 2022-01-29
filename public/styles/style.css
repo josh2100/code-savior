@@ -1,155 +1,395 @@
+/* Root Styles and Color Variables */
+:root {
+  --primary-color: #e8d3a3;
+  --secondary-color: #ffa633;
+  --trimester-color: #3b5a9d;
+  --bg-color: #ffdae0;
+  --fourth-color: #4fb2aa;
+}
+
+/* Universal Styles */
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  list-style: none;
+  box-sizing: border-box;
+}
+
+a,
+a:hover,
+a::before,
+a::after {
   text-decoration: none;
-}
-
-a, a::after, a:hover, a::before {
-  text-decoration: none;
   list-style: none;
 }
 
-.flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.flex-jc-c {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.flex-jc-sb {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.flex-jc-sa {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.flex-ai-c {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.hero-message {
-  position: static;
-  padding: 10px;
-  font-size: 2rem;
-  bottom: -25px;
-}
-
-.hero-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-self: center;
-  -ms-flex-item-align: center;
-      align-self: center;
-}
-
-.hero-wrapper {
-  background-color: #8DDBCF;
-  -webkit-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-          box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  padding: 100px;
-  width: 50%;
+/* Homepage Message Styling */
+.homepage-message {
+  padding: 12px;
   height: 100%;
-  border: 2px solid red;
+  width: 25%;
+  margin: 10px auto;
+  font-size: 28px;
+  color: var(--trimester-color);
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
 }
 
-.welcome {
-  color: #0B99BB;
-  font-size: 2rem;
-  margin: auto;
-  padding: 10px;
+/* Header/Nav-bar */
+.welcome-banner {
+  font-size: 30px;
+  margin: auto auto;
+  padding: 5px;
+  text-align: center;
 }
 
-.header-navbar {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.welcome-banner a {
+  color: var(--trimester-color);
+}
+
+.nav-bar {
+  background-color: var(--fourth-color);
+  color: var(--trimester-color);
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: 1.25rem;
-  color: #0B99BB;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
 }
 
-.header-nav-links a {
-  color: #0B99BB;
+.nav-bar a {
+  font-size: 22px;
+  color: var(--trimester-color);
 }
 
-.header-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 8em;
-  font-size: 1rem;
+.nav-bar a:hover {
+  text-decoration: underline;
 }
 
-.header-links-links li {
-  padding: 5px 14px;
+.btn-no-style {
+  background-color: var(--fourth-color);
+  color: var(--trimester-color);
+  font-size: 22px;
+  border: none;
 }
 
-input[type=checkbox] {
-  display: none;
+/* About Section */
+.concept-content-wrapper {
+  width: 100%;
+  display: table;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.hamburger {
-  display: none;
-  font-size: 1.5rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+.concept-content {
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  padding: 5px;
 }
 
-@media (max-width: 63.9375em) {
-  .header-links {
-    background-color: white;
-    display: none;
-    position: absolute;
-    right: 0;
-    left: 0;
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 1rem;
-  }
-  .header-links li:hover {
-    display: inline-block;
-    text-decoration: underline;
-  }
-  .header-links li + li {
-    margin-top: 0.75rem;
-  }
-  input[type=checkbox]:checked ~ .header-links {
-    display: block;
-  }
-  .hamburger {
-    display: block;
-  }
+.concept-content h2 {
+  color: var(--trimester-color);
+  font-size: 26px;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  color: #0B99BB;
-  background-color: #BFCFCC;
-  font-size: 1rem;
+.concept-content p {
+  color: var(--trimester-color);
+  font-size: 20px;
+  padding: 5px;
+}
+
+.user-story-wrapper {
+  list-style: none;
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  text-align: center;
+  padding: 5px;
   width: 100%;
 }
-/*# sourceMappingURL=style.css.map */
+
+.user-story {
+  margin: 0 auto;
+  display: table;
+  width: 100%;
+}
+
+.user-story ol {
+  color: var(--trimester-color);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.user-story li {
+  font-size: 20px;
+  color: var(--trimester-color);
+}
+
+.founders-story-wrapper {
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+}
+
+.founders-story {
+  font-size: 20px;
+  text-align: center;
+  color: var(--trimester-color);
+  padding: 2px;
+}
+
+.founders-story h2 {
+  font-size: 26px;
+  color: var(--trimester-color);
+  padding: 2px;
+  font-weight: 600;
+}
+
+/* Future Developments Styling */
+.future-content-wrapper {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  color: var(--trimester-color);
+}
+
+.future-content h2 {
+  font-size: 26px;
+  padding: 2px;
+}
+
+.future-content ol {
+  font-size: 22px;
+  padding: 5px;
+}
+
+.future-content li {
+  font-size: 20px;
+  padding: 2px 8px;
+}
+
+.future-content li:last-child {
+  padding: 5px;
+}
+
+/* Contact Section */
+.contact-wrapper {
+  display: table;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.secondary-content {
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+  text-align: center;
+  padding: 5px;
+  display: table;
+  margin: 0 auto;
+}
+
+.secondary-content h2 {
+  color: var(--trimester-color);
+  font-size: 24px;
+}
+
+.secondary-content h4 {
+  color: var(--fourth-color);
+  font-size: 22px;
+  padding: 5px;
+}
+
+.secondary-content p {
+  color: var(--trimester-color);
+  font-size: 20px;
+  padding: 5px;
+}
+
+/* Hero Section */
+.topic-text {
+  font-size: 40px;
+  text-align: center;
+  margin: 15px;
+  text-decoration: underline;
+}
+
+.topic-text p {
+  color: var(--trimester-color);
+}
+
+.content-options {
+  padding: 10px 5px;
+  margin: 15px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.content-options a {
+  margin: 5px;
+  font-size: 60px;
+  color: var(--trimester-color);
+  text-align: center;
+}
+
+/* js-main.handlebars Styling */
+.main-title h1 {
+  color: var(--trimester-color);
+  font-size: 35px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.universe-columns {
+  align-items: center;
+  width: 100%;
+  text-align:center;
+}
+
+/* js.handlebars Styling */
+.js-handle-title {
+  text-align: center;
+  font-size: 30px;
+  color: var(--trimester-color);
+  text-decoration: underline;
+}
+
+.post {
+  margin: 25px 25px;
+  padding: 10px;
+  font-size: 25px;
+  text-align: center;
+  box-shadow: -8px 0px 8px #000000;
+  background-color: var(--bg-color);
+}
+
+.post:hover {
+  opacity: 0.75;
+}
+
+/* JavaScript Quiz Page Styling */
+.js-quiz-header {
+  text-align: center;
+  font-size: 30px;
+  text-decoration: underline;
+  color: var(--trimester-color);
+}
+
+.js-quiz-text {
+  font-size: 26px;
+  color: var(--trimester-color);
+  text-decoration: underline;
+  text-align: center;
+}
+
+.js-quiz-start-btn {
+  text-align: center;
+}
+
+/* Profile and Login Page Styles */
+input {
+  padding: 0.5%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+textarea:focus,
+input:focus {
+  outline: none;
+  border: 1px solid #3486eb;
+}
+
+button {
+  background-color: var(--fourth-color);
+  border: 0;
+  padding: 5px;
+  color: var(--trimester-color);
+  font-weight: bold;
+  transition: background-color 0.1s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #3486eb;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  width: 100%;
+  height: 20px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--fourth-color);
+  color: var(--trimester-color);
+}
+
+.external-link {
+  background-color: var(--primary-color);
+  color: var(--trimester-color);
+}
+
+.internal-link {
+  background-color: var(--primary-color);
+  color: var(--trimester-color);
+}
+
+.resource-link {
+  width: 500px;
+}
+
+.post-text {
+  text-align: center;
+  background-color: none;
+}
+
+.post-text-single-handlebar {
+  text-align: center;
+}
+
+.comment-form {
+  text-align: center;
+}
+
+.comment-text {
+  width: 330px;
+  height: 100px;
+}
+
+.new-post-form {
+  text-align: center;
+}
+
+.comments {
+  text-align: center;
+}
+
+.login-form {
+  text-align: center;
+}
+
+.signup-form {
+  text-align: center;
+}
+
+.post-int-link {
+  color: var(--trimester-color);
+  text-decoration: underline;
+}
+
+.post-ext-link {
+  color: var(--fourth-color);
+  text-decoration: underline;
+}
+
+.post-ext-link:hover {
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+.edit-post-form {
+  text-align: center;
+}
+
+#accuracy-indicator{
+  color: var(--primary-color);
+  font-weight: bold;
+}

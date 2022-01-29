@@ -1,17 +1,17 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment, Vote } = require("../models");
+const { Post, User, Comment } = require("../models");
 
-// route for main javascript page (js/main)
+// route for main html page (js/main)
 router.get("/main", (req, res) => {
-  res.render("js-main");
+  res.render("html-main");
 });
 
-// get all posts js resources
+// get all posts html resources
 router.get("/", (req, res) => {
     Post.findAll({
       where: {
-        topic: 'js'
+        topic: 'html'
       },
       attributes: [
         "id",
@@ -27,6 +27,7 @@ router.get("/", (req, res) => {
           "vote_count",
         ],
       ],
+      order: [["created_at", "DESC"]],
       include: [
         {
           model: Comment,
@@ -43,10 +44,9 @@ router.get("/", (req, res) => {
       ],
     })
       .then((dbPostData) => {
-        console.log('dbPostData', dbPostData);
         const posts = dbPostData.map((post) => post.get({ plain: true })).sort((a,b) => b.vote_count - a.vote_count);
-        console.log('line 49- posts: ' , posts);
-        res.render("js", {
+  
+        res.render("html", {
           posts,
           loggedIn: req.session.loggedIn,
         });

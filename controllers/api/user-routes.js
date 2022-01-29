@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Post, Comment, Vote } = require("../../models");
+const { User, Post, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // Get all User route
@@ -27,23 +27,16 @@ router.get("/:id", async (req, res) => {
       include: [
         {
           model: Post,
-          attributes: ["id", "title", "post_text", "created_at"],
+          attributes: ["id", "title", "text", "post_url"],
         },
         {
           model: Comment,
           attributes: ["id", "comment_text", "created_at"],
-          include: [
+          include: 
             {
               model: Post,
               attributes: ["title"],
             },
-          ],
-        },
-        {
-          model: Post,
-          attributes: ["title"],
-          through: Vote,
-          attributes: ["voted_posts"],
         },
       ],
     });
@@ -63,13 +56,19 @@ router.post("/", async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
+
+    console.log('response', response);
+
     req.session.save(() => {
+      // declare session variables
       req.session.user_id = response.id;
       req.session.username = response.username;
       req.session.loggedIn = true;
-    });
 
-    res.status(200).json(response);
+      res
+        .status(200)
+        .json(response);
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -96,11 +95,11 @@ router.put("/:id", withAuth, async (req, res) => {
 });
 
 // User login route
-router.put("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const response = await User.findOne({
       where: {
-        id: req.params.id,
+        email: req.body.email,
       },
     });
     if (!response) {
@@ -124,10 +123,8 @@ router.put("/login", async (req, res) => {
 
       res
         .status(200)
-        .json({ user: response, message: "You are now logged in!" });
+        .json({ user: response, message: "You are now successfully logged in!" });
     });
-
-    res.status(200).json({ message: "You are successfully logged in!" });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -144,6 +141,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
+
 // User delete route
 router.delete("/:id", async (req, res) => {
   try {
@@ -156,6 +154,7 @@ router.delete("/:id", async (req, res) => {
     if (!response) {
       res.status(400).json({ message: "No user found with this id" });
     }
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
